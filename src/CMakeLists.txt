@@ -30,4 +30,3 @@ target_compile_options(${PROJECT_NAME} INTERFACE
   /WX
   /W4>
 )
-
