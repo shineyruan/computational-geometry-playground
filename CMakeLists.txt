@@ -11,6 +11,13 @@ if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_EXTENSIONS OFF)
 endif()
 
+# Compile with -march=native
+include(CheckCXXCompilerFlag)
+CHECK_CXX_COMPILER_FLAG("-march=native" COMPILER_SUPPORTS_MARCH_NATIVE)
+if(COMPILER_SUPPORTS_MARCH_NATIVE)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
+endif()
+
 # ----- Download CPM.cmake and use it as dependency management -----
 set(CPM_DOWNLOAD_VERSION 0.35.0)
 if(CPM_SOURCE_CACHE)
