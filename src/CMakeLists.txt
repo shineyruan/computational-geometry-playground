@@ -19,12 +19,14 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
   spdlog
   sciplot
 )
-target_compile_options(${PROJECT_NAME} INTERFACE
+target_compile_options(${PROJECT_NAME} PRIVATE
   $<$<CXX_COMPILER_ID:GNU>:
   -Wall
+  -Wextra
   -Werror>
   $<$<CXX_COMPILER_ID:AppleClang>:
   -Wall
+  -Wextra
   -Werror>
   $<$<CXX_COMPILER_ID:MSVC>:
   /WX
