@@ -11,7 +11,7 @@ Tested on:
 
 This is a plain CMake project. Run the normal CMake build steps.
 
-### On MacOS
+### On MacOS & Linux
 
 ```bash
 mkdir build && cd build
