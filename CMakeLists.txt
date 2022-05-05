@@ -41,14 +41,16 @@ set(FETCHCONTENT_QUIET FALSE)
 
 # ----- Install Eigen -----
 CPMAddPackage(
-  NAME eigen
-  GIT_REPOSITORY https://gitlab.com/libeigen/eigen.git
-  GIT_TAG 3.4.0
-  OPTIONS
-    "EIGEN_BUILD_DOC Off"
-    "BUILD_TESTING Off"
-    "EIGEN_BUILD_PKGCONFIG Off"
+  NAME Eigen
+  VERSION 3.4.0
+  URL https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz
+  # Eigen's CMakelists are not intended for library use
+  DOWNLOAD_ONLY YES
 )
+if(Eigen_ADDED)
+  add_library(Eigen INTERFACE IMPORTED)
+  target_include_directories(Eigen INTERFACE ${Eigen_SOURCE_DIR})
+endif()
 # -------------------------
 
 # ----- Install spdlog -----
@@ -56,20 +58,40 @@ CPMAddPackage(
   NAME spdlog
   GIT_TAG v1.10.0
   GITHUB_REPOSITORY gabime/spdlog
+  GIT_PROGRESS TRUE
 )
 # --------------------------
 
-# ----- Install sciplot -----
-CPMAddPackage(
-  NAME sciplot
-  GIT_TAG cmake-subproject-support
-  GITHUB_REPOSITORY Ram-Z/sciplot
-  OPTIONS
-    "SCIPLOT_BUILD_EXAMPLES Off"
-    "SCIPLOT_BUILD_TESTS Off"
-    "SCIPLOT_BUILD_DOCS Off"
+# ----- Install OpenCV -----
+include(cmake/build_external_project.cmake)
+build_external_project(
+	opencv
+	${CMAKE_CURRENT_BINARY_DIR}/external
+	https://github.com/opencv/opencv.git
+	4.5.4
+    -DBUILD_LIST=core,highgui,improc,imgcodecs
+    -DBUILD_DOCS:BOOL=FALSE
+    -DBUILD_EXAMPLES:BOOL=FALSE
+    -DBUILD_TESTS:BOOL=FALSE
+    -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+    -DBUILD_SHARED_LIBS:BOOL=TRUE
+    -DBUILD_NEW_PYTHON_SUPPORT:BOOL=OFF
+    -DBUILD_WITH_DEBUG_INFO=OFF
+    -DWITH_CUDA:BOOL=FALSE
+    -DWITH_FFMPEG:BOOL=FALSE
+    -DWITH_MSMF:BOOL=FALSE
+    -DWITH_IPP:BOOL=FALSE
+    -DWITH_PROTOBUF:BOOL=FALSE
+    -DWITH_QUIRC:BOOL=FALSE
+    -DBUILD_PERF_TESTS:BOOL=FALSE
+    -DBUILD_PNG:BOOL=ON
+    -DBUILD_JPEG:BOOL=ON
+    -DBUILD_WITH_STATIC_CRT:BOOL=OFF
+    -DBUILD_FAT_JAVA_LIB=OFF
+    -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_CURRENT_BINARY_DIR}/opencv
 )
-# ---------------------------
-
+set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "${CMAKE_CURRENT_BINARY_DIR}/opencv")
+find_package(OpenCV REQUIRED)
+# --------------------------
 add_subdirectory(src)
 add_subdirectory(examples)
