@@ -27,7 +27,7 @@ function (build_external_project target prefix url branch) #FOLLOWING ARGUMENTS 
   execute_process(COMMAND ${CMAKE_COMMAND} -G ${CMAKE_GENERATOR} ..
     WORKING_DIRECTORY ${trigger_build_dir}/build
   )
-  execute_process(COMMAND ${CMAKE_COMMAND} --build . -j
+  execute_process(COMMAND ${CMAKE_COMMAND} --build .
     WORKING_DIRECTORY ${trigger_build_dir}/build
   )
 

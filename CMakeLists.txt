@@ -64,6 +64,7 @@ CPMAddPackage(
 
 # ----- Install OpenCV -----
 include(cmake/build_external_project.cmake)
+message(STATUS "Using CMake build parallel level: ${CMAKE_BUILD_PARALLEL_LEVEL}")
 build_external_project(
 	opencv
 	${CMAKE_CURRENT_BINARY_DIR}/external
@@ -89,6 +90,7 @@ build_external_project(
     -DBUILD_WITH_STATIC_CRT:BOOL=OFF
     -DBUILD_FAT_JAVA_LIB=OFF
     -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_CURRENT_BINARY_DIR}/opencv
+    -DCMAKE_BUILD_PARALLEL_LEVEL=${CMAKE_BUILD_PARALLEL_LEVEL}
 )
 set(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} "${CMAKE_CURRENT_BINARY_DIR}/opencv")
 find_package(OpenCV REQUIRED)
