@@ -4,7 +4,7 @@ A C++ playground for computational geometry algorithms &amp; plotting.
 
 Tested on:
 
-* MacOS Monterey 12.3.1 with M1 chip
+* MacOS Monterey 12.5 with M1 chip
 * Ubuntu 20.04 LTS
 * Windows 11
 
