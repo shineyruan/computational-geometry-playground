@@ -11,6 +11,9 @@ if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_EXTENSIONS OFF)
 endif()
 
+# cmake configuration type
+set(CMAKE_CONFIGURATION_TYPES "Debug;Release")
+
 # Compile with -march=native
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-march=native" COMPILER_SUPPORTS_MARCH_NATIVE)

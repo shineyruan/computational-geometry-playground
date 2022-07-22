@@ -32,5 +32,6 @@ target_compile_options(${PROJECT_NAME} PRIVATE
   -Werror>
   $<$<CXX_COMPILER_ID:MSVC>:
   /WX
-  /W4>
+  /W4
+  /wd4127>
 )
