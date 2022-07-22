@@ -16,6 +16,10 @@ source_group("Headers"  FILES ${HEADER_FILES})
 # Link libraries
 target_link_libraries(${PROJECT_NAME} PUBLIC
   spdlog
+  Eigen
+)
+target_include_directories(${PROJECT_NAME} PRIVATE
+  ${CMAKE_CURRENT_SOURCE_DIR}
 )
 target_compile_options(${PROJECT_NAME} PRIVATE
   $<$<CXX_COMPILER_ID:GNU>:
