@@ -28,6 +28,8 @@ protected:
   std::vector<Eigen::Vector2d> vertices_;
   std::vector<std::pair<Eigen::Vector2d, Eigen::Vector2d>> edges_;
 
+private:
+  // a set collection of vertices
   std::unordered_set<Eigen::Vector2d> vertex_pool_;
 };
 
