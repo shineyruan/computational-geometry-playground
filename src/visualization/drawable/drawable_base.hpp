@@ -14,6 +14,8 @@ class DrawableBase {
 public:
   DrawableBase(DrawableType type = DrawableType::UNSUPPORTED) : type_(type) {}
 
+  DrawableType Type() const { return type_; }
+
 protected:
   DrawableType type_;
 };
