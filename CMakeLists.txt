@@ -13,6 +13,7 @@ endif()
 
 # cmake configuration type
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -ggdb -fno-omit-frame-pointer")
 
 # Compile with -march=native
 include(CheckCXXCompilerFlag)
