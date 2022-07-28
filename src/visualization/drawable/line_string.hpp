@@ -3,13 +3,6 @@
 
 #include "drawable_base.hpp"
 
-template <>
-struct std::hash<Eigen::Vector2d> {
-  size_t operator()(const Eigen::Vector2d& pt_2d) const noexcept {
-    return std::hash<double>()(pt_2d.x());
-  }
-};
-
 namespace cgzr {
 namespace visualization {
 
@@ -20,17 +13,16 @@ public:
   bool UpdateVertices(const std::vector<Eigen::Vector2d>& vertices);
   const std::vector<Eigen::Vector2d>& Vertices() const;
 
-  bool UpdateEdges(
-      const std::vector<std::pair<Eigen::Vector2d, Eigen::Vector2d>>& edges);
-  const std::vector<std::pair<Eigen::Vector2d, Eigen::Vector2d>>& Edges() const;
-
-protected:
-  std::vector<Eigen::Vector2d> vertices_;
-  std::vector<std::pair<Eigen::Vector2d, Eigen::Vector2d>> edges_;
+  bool IsEdge(Eigen::Vector2d p1, Eigen::Vector2d p2) const;
+  bool AddEdge(Eigen::Vector2d p1, Eigen::Vector2d p2);
+  bool AddEdge(size_t p1_idx, size_t p2_idx);
+  bool UpdateEdges(const std::vector<std::pair<size_t, size_t>>& edges);
+  const std::vector<std::pair<size_t, size_t>>& Edges() const;
 
 private:
-  // a set collection of vertices
-  std::unordered_set<Eigen::Vector2d> vertex_pool_;
+  std::vector<Eigen::Vector2d> vertices_;
+  std::vector<std::pair<size_t, size_t>> edges_;
+  std::vector<std::vector<size_t>> neighbors_;
 };
 
 }  // namespace visualization
