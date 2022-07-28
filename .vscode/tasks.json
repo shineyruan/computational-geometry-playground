@@ -1,0 +1,20 @@
+{
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "debug_build",
+      "command": "cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_PARALLEL_LEVEL=8 -DCMAKE_BUILD_TYPE=Debug; make -j",
+      "options": {
+        "cwd": "${workspaceFolder}/build"
+      }
+    },
+    {
+      "type": "shell",
+      "label": "release_build",
+      "command": "cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_PARALLEL_LEVEL=8 -DCMAKE_BUILD_TYPE=Release; make -j",
+      "options": {
+        "cwd": "${workspaceFolder}/build"
+      }
+    }
+  ]
+}

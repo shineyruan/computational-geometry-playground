@@ -290,5 +290,7 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,linux,c++,python,cmake
 
-.vscode
+.vscode/**
 tmp
+!.vscode/launch.json
+!.vscode/tasks.json
