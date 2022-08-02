@@ -16,6 +16,8 @@ function (build_external_project target prefix url branch) #FOLLOWING ARGUMENTS 
       GIT_REPOSITORY  ${url}
       GIT_TAG ${branch}
       GIT_PROGRESS TRUE
+      CMAKE_GENERATOR Ninja
+      BUILD_COMMAND ninja
       CMAKE_ARGS ${ARGN}
     )
     add_custom_target(trigger_${target})
