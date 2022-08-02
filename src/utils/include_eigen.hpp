@@ -2,7 +2,7 @@
 #define __UTILS_EIGEN_INCLUDE__HPP__
 
 // only for M1 Mac's VSCode intellisense completion
-#ifdef __OSX__
+#ifdef __APPLE__
 #if __INTELLISENSE__
 #undef __ARM_NEON
 #undef __ARM_NEON__
