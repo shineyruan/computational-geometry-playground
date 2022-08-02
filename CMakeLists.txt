@@ -22,6 +22,9 @@ if(COMPILER_SUPPORTS_MARCH_NATIVE)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
 endif()
 
+# set up parallel level
+message(STATUS "Using CMake build parallel level: ${CMAKE_BUILD_PARALLEL_LEVEL}")
+
 # ----- Download CPM.cmake and use it as dependency management -----
 set(CPM_DOWNLOAD_VERSION 0.35.0)
 if(CPM_SOURCE_CACHE)
@@ -73,6 +76,7 @@ build_external_project(
 	${CMAKE_CURRENT_BINARY_DIR}/external
 	https://github.com/opencv/opencv.git
 	4.5.4
+  ${CMAKE_BUILD_PARALLEL_LEVEL}
     -DBUILD_LIST=core,highgui,improc,imgcodecs
     -DBUILD_DOCS:BOOL=FALSE
     -DBUILD_EXAMPLES:BOOL=FALSE

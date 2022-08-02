@@ -1,6 +1,6 @@
 # This function is used to force a build on a dependant project at cmake configuration phase.
 # credit: https://stackoverflow.com/a/23570741/320103
-function (build_external_project target prefix url branch) #FOLLOWING ARGUMENTS are the CMAKE_ARGS of ExternalProject_Add
+function (build_external_project target prefix url branch parallel_level) #FOLLOWING ARGUMENTS are the CMAKE_ARGS of ExternalProject_Add
   set(trigger_build_dir ${CMAKE_BINARY_DIR}/force_${target})
 
   # mktemp dir in build tree
@@ -16,8 +16,7 @@ function (build_external_project target prefix url branch) #FOLLOWING ARGUMENTS 
       GIT_REPOSITORY  ${url}
       GIT_TAG ${branch}
       GIT_PROGRESS TRUE
-      CMAKE_GENERATOR Ninja
-      BUILD_COMMAND ninja
+      BUILD_COMMAND $(MAKE) -j${parallel_level}
       CMAKE_ARGS ${ARGN}
     )
     add_custom_target(trigger_${target})
