@@ -12,13 +12,28 @@ namespace visualization {
 
 class VisualizerBase {
 public:
-  void Add(const DrawableBase* drawable);
-
+  VisualizerBase()
+      : world_min_(-std::numeric_limits<double>::infinity(),
+                   -std::numeric_limits<double>::infinity()),
+        world_max_(std::numeric_limits<double>::infinity(),
+                   std::numeric_limits<double>::infinity()) {}
+  virtual ~VisualizerBase() {}
   virtual void Visualize() const = 0;
+
+  /**
+   * @brief Adds the drawable into Visualizer and destroys it
+   */
+  void Add(std::unique_ptr<DrawableBase> drawable);
 
 protected:
   std::vector<std::unique_ptr<DrawableBase>> drawables_;
   std::unordered_map<int, std::vector<const DrawableBase*>> drawable_by_type_;
+
+  // world boundaries
+  //  visualizer should be capable of scaling the shapes to appropriate visual
+  //  size
+  Eigen::Vector2d world_min_;
+  Eigen::Vector2d world_max_;
 };
 
 }  // namespace visualization

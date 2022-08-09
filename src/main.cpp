@@ -19,11 +19,22 @@ int main() {
   spdlog::info("Hello!");
 
   visualization::OpenCVVisualizer visualizer;
-  visualization::LineString line_string;
-  visualization::PointSet point_set;
+  auto line_string = std::make_unique<visualization::LineString>();
+  auto point_set = std::make_unique<visualization::PointSet>();
 
-  visualizer.Add(&line_string);
-  visualizer.Add(&point_set);
+  std::vector<Eigen::Vector2d> points{
+      {0., 10.}, {10., 5.}, {5., 10.}, {5., 5.}};
+  point_set->UpdateVertices(std::move(points));
+
+  std::vector<Eigen::Vector2d> vertices{{0., 3.}, {3., 0.}, {3., 3.}, {0., 0.}};
+  std::vector<std::pair<size_t, size_t>> edges{{0, 1}, {1, 2}, {2, 3}, {1, 3}};
+  line_string->UpdateVertices(std::move(vertices));
+  line_string->UpdateEdges(std::move(edges));
+
+  visualizer.Add(std::move(line_string));
+  visualizer.Add(std::move(point_set));
+
+  visualizer.Visualize();
 
   spdlog::info("Bye!");
 
