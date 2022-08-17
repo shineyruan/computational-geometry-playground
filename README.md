@@ -10,12 +10,24 @@ Tested on:
 
 ## How to Build
 
-This is a plain CMake project with C++ 17. Run the normal CMake build steps. All necessary dependencies should be resolved in CMake configure time.
+This is a C++ 17 project managed with CMake and [Conan package manager](https://conan.io/). Make sure Conan is installed correctly onto your system.
+
+### Configure Dependencies
+
+```bash
+mkdir build && cd build
+conan install ..
+```
+
+If package install failure, try with building from source locally:
+
+```bash
+conan install .. --build=$(PKG_NAME)
+```
 
 ### On MacOS & Linux
 
 ```bash
-mkdir build && cd build
 cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1
 make -j
 ```
@@ -25,10 +37,9 @@ make -j
 This project is also tested on Visual Studio 2022, Windows 11. However, it is not recommended to develop on Windows since checking the build of OpenCV is extremely slow on Windows!
 
 ```bash
-mkdir build && cd build
 cmake-gui ..
 ```
 
-Add `CMAKE_BUILD_PARALLEL_LEVEL=8` as an extra entry in CMake build flags. Then hit "Configure" in CMake GUI with default generator as Visual Studio 2022. Wait for all external dependencies to download and build. Then hit "Generate" and "Open in Visual Studio 2022".
+Hit "Configure" in CMake GUI with default generator as Visual Studio 2022. Wait for all external dependencies to download and build. Then hit "Generate" and "Open in Visual Studio 2022".
 
 In Visual Studio 2022, set `cg_playground` as startup project, and then hit `CTRL-B` to build, `CTRL-F5` to run.

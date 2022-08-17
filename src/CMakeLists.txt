@@ -13,16 +13,13 @@ target_sources(${PROJECT_NAME} PUBLIC ${SOURCE_FILES} ${HEADER_FILES})
 source_group("Sources"  FILES ${SOURCE_FILES})
 source_group("Headers"  FILES ${HEADER_FILES})
 
-# Link libraries
-target_link_libraries(${PROJECT_NAME} PUBLIC
-  spdlog
-  Eigen
-  ${OpenCV_LIBS}
+target_link_libraries(${PROJ_NAME}
+  ${CONAN_LIBS}
 )
 
 # include dirs
-target_include_directories(${PROJECT_NAME} PUBLIC
-  ${OpenCV_INCLUDE_DIRS}
+target_include_directories(${PROJ_NAME} PUBLIC
+  ${CONAN_INCLUDE_DIRS}
 )
 target_include_directories(${PROJECT_NAME} PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}
