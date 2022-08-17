@@ -15,7 +15,6 @@ opencv:cpu_dispatch=None
 opencv:cuda_arch_bin=None
 opencv:dnn=False
 opencv:dnn_cuda=False
-opencv:fPIC=True
 opencv:nonfree=False
 opencv:parallel=False
 opencv:shared=False
