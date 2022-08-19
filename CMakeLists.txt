@@ -34,6 +34,7 @@ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
 # find GTK-2.0 for OpenCV highgui
+# Only on Linux
 if (UNIX AND NOT APPLE)
   find_package(PkgConfig REQUIRED)
   PKG_CHECK_MODULES(GTK REQUIRED gtk+-2.0)
