@@ -24,12 +24,17 @@ if (UNIX AND NOT APPLE)
 endif()
 
 target_link_libraries(${PROJ_NAME}
-  ${CONAN_LIBS}
+  ${CONAN_LIBS_EIGEN}
+  ${CONAN_LIBS_OPENCV}
+  ${CONAN_LIBS_SPDLOG}
+  ${CONAN_LIBS_FMT}
 )
 
 # include dirs
 target_include_directories(${PROJ_NAME} PUBLIC
-  ${CONAN_INCLUDE_DIRS}
+  ${CONAN_INCLUDE_DIRS_EIGEN}
+  ${CONAN_INCLUDE_DIRS_OPENCV}
+  ${CONAN_INCLUDE_DIRS_SPDLOG}
 )
 target_include_directories(${PROJ_NAME} PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}
