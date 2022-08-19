@@ -38,8 +38,17 @@ jobs:
       - name: Conan version
         run: echo "${{ steps.conan.outputs.version }}"
 
-      - name: Install pkg dependency
-        run: conan install ${{ github.workspace }}/conanfile_${{ steps.string.outputs.lowercase }}.txt -s build_type=${{ matrix.type }} --install-folder=${{ github.workspace }}/build --build=opencv
+      - name: Install system packages (Linux)
+        if: steps.string.outputs.lowercase == 'linux'
+        run: sudo apt install libgtk2.0-dev
+
+      - name: Install pkg dependency (Linux)
+        if: steps.string.outputs.lowercase == 'linux'
+        run: conan install ${{ github.workspace }}/conanfile_linux.txt -s build_type=${{ matrix.type }} -s compiler.libcxx=libstdc++11 --install-folder=${{ github.workspace }}/build --build=opencv
+
+      - name: Install pkg dependency (macOS)
+        if: steps.string.outputs.lowercase == 'macos'
+        run: conan install ${{ github.workspace }}/conanfile_macos.txt -s build_type=${{ matrix.type }} --install-folder=${{ github.workspace }}/build --build=opencv
 
       - name: Configure CMake
         # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
