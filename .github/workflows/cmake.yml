@@ -16,6 +16,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
         type: ["Release", "Debug"]
+      fail-fast: false
 
     steps:
       - uses: actions/checkout@v3
