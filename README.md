@@ -14,32 +14,49 @@ This is a C++ 17 project managed with CMake and [Conan package manager](https://
 
 ### Configure Dependencies
 
+One could use the following commands to configure Conan dependencies:
+
+#### On MacOS & Windows 11
+
+Just a normal build on MacOS:
+
 ```bash
 mkdir build && cd build
-conan install ..
+conan install ../conanfile_macos.txt --build=opencv
 ```
 
-If package install failure, try with building from source locally:
+and a normal build on Windows:
 
 ```bash
-conan install .. --build=$(PKG_NAME)
+mkdir build && cd build
+conan install ../conanfile_windows.txt --build=opencv
 ```
 
-### On MacOS & Linux
+#### On Linux (Ubuntu)
+
+Linux's version of OpenCV depends on GTK 2.0+ to provide GUI facilities. Also there is a known issue that [Conan defaults to `libstdc++` in the generated profile which only supports GCC ABI with version <5.0.](https://docs.conan.io/en/latest/howtos/manage_gcc_abi.html#manage-gcc-abi) We need to manually specify the new GCC ABI with the following command:
+
+```bash
+mkdir build && cd build
+sudo apt install libgtk2.0-dev
+conan install ../conanfile_linux.txt --build=opencv -s compiler.libcxx=libstdc++11
+```
+
+### Building Source Code
+
+#### On MacOS & Linux
 
 ```bash
 cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1
 make -j
 ```
 
-### On Windows (Beta)
+#### On Windows 11
 
-This project is also tested on Visual Studio 2022, Windows 11. However, it is not recommended to develop on Windows since checking the build of OpenCV is extremely slow on Windows!
+In Powershell, run
 
 ```bash
-cmake-gui ..
+cmake ..
 ```
 
-Hit "Configure" in CMake GUI with default generator as Visual Studio 2022. Wait for all external dependencies to download and build. Then hit "Generate" and "Open in Visual Studio 2022".
-
-In Visual Studio 2022, set `cg_playground` as startup project, and then hit `CTRL-B` to build, `CTRL-F5` to run.
+Open Visual Studio 2022 with the generated project `cg_playground.sln`. In Visual Studio 2022, set `cg_playground` as startup project, and then hit `CTRL-B` to build, `CTRL-F5` to run.
