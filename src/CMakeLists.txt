@@ -13,6 +13,15 @@ target_sources(${PROJECT_NAME} PUBLIC ${SOURCE_FILES} ${HEADER_FILES})
 source_group("Sources"  FILES ${SOURCE_FILES})
 source_group("Headers"  FILES ${HEADER_FILES})
 
+if (UNIX AND NOT APPLE)
+  target_link_libraries(${PROJ_NAME}
+    ${GTK_LIBRARIES}
+  )
+  target_include_directories(${PROJ_NAME} PUBLIC
+    ${GTK_INCLUDE_DIRS}
+  )
+endif()
+
 target_link_libraries(${PROJ_NAME}
   ${CONAN_LIBS}
 )

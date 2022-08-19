@@ -13,6 +13,14 @@ add_executable(example_opencv example_opencv.cpp)
 target_link_libraries(example_opencv PUBLIC
   ${CONAN_LIBS_OPENCV}
 )
+if (UNIX AND NOT APPLE)
+  target_link_libraries(example_opencv PUBLIC
+    ${GTK_LIBRARIES}
+  )
+  target_include_directories(example_opencv PUBLIC
+    ${GTK_INCLUDE_DIRS}
+  )
+endif()
 target_include_directories(example_opencv PUBLIC
   ${CONAN_INCLUDE_DIRS_OPENCV}
 )
