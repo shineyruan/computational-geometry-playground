@@ -13,7 +13,15 @@ target_sources(${PROJ_NAME} PUBLIC ${SOURCE_FILES} ${HEADER_FILES})
 source_group("Sources"  FILES ${SOURCE_FILES})
 source_group("Headers"  FILES ${HEADER_FILES})
 
-# Linux
+# link libraries
+target_link_libraries(${PROJ_NAME}
+  ${CONAN_LIBS_EIGEN}
+  ${CONAN_LIBS_OPENCV}
+  ${CONAN_LIBS_SPDLOG}
+  ${CONAN_LIBS_FMT}
+)
+
+# Linux specific libraries
 if (UNIX AND NOT APPLE)
   target_link_libraries(${PROJ_NAME}
     ${GTK_LIBRARIES}
@@ -22,13 +30,6 @@ if (UNIX AND NOT APPLE)
     ${GTK_INCLUDE_DIRS}
   )
 endif()
-
-target_link_libraries(${PROJ_NAME}
-  ${CONAN_LIBS_EIGEN}
-  ${CONAN_LIBS_OPENCV}
-  ${CONAN_LIBS_SPDLOG}
-  ${CONAN_LIBS_FMT}
-)
 
 # include dirs
 target_include_directories(${PROJ_NAME} PUBLIC
