@@ -9,6 +9,13 @@
 #endif
 #endif
 
+/**
+ * @file include_eigen.hpp
+ * @author Zhihao Ruan (shineyruan@gmail.com)
+ * @brief A single file for ALL Eigen headers in the project.
+ * @date 2022-08-21
+ */
+
 #include <Eigen/Dense>
 
 #endif /* __UTILS_EIGEN_INCLUDE__HPP__ */

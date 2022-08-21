@@ -1,6 +1,13 @@
 #ifndef __VISUALIZATION_VISUALIZER_VISUALIZER_BASE__HPP__
 #define __VISUALIZATION_VISUALIZER_VISUALIZER_BASE__HPP__
 
+/**
+ * @file visualizer_base.hpp
+ * @author Zhihao Ruan (shineyruan@gmail.com)
+ * @brief A Visualizer should be able to visualize every Drawable object on a
+ *        reasonable scale.
+ */
+
 #include <memory>
 #include <unordered_map>
 #include <vector>

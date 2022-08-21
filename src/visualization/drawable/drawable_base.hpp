@@ -1,6 +1,13 @@
 #ifndef __VISUALIZATION_DRAWABLE_DRAWABLE_BASE__HPP__
 #define __VISUALIZATION_DRAWABLE_DRAWABLE_BASE__HPP__
 
+/**
+ * @file drawable_base.hpp
+ * @author Zhihao Ruan (shineyruan@gmail.com)
+ * @brief A Drawable is NOT a geometry. It is dedicated only for drawing and
+ *        should only be constructed before Visualizer.
+ */
+
 #include <unordered_set>
 #include <vector>
 
