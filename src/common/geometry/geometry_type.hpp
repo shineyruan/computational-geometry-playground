@@ -6,7 +6,7 @@
 namespace cgzr {
 enum class GeometryType { UNKNOWN = 0, POINTS, POLYGON };
 
-std::string ToString(GeometryType type) {
+inline std::string ToString(GeometryType type) {
   switch (type) {
     case GeometryType::UNKNOWN:
       return "UNKNOWN";
