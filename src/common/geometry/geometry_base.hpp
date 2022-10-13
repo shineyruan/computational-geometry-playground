@@ -19,6 +19,7 @@ namespace cgzr {
 class GeometryBase {
 public:
   GeometryBase() = default;
+  GeometryBase(GeometryType type) : type_(type) {}
 
   GeometryType Type() const { return type_; }
 
