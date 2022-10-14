@@ -14,6 +14,11 @@ public:
   Points(const std::vector<Eigen::Vector2d>& points)
       : GeometryBase(GeometryType::POINTS), positions_(points) {}
 
+  // random initialization with designated size
+  Points(size_t num_points);
+
+  size_t Size() const override { return positions_.size(); }
+
   std::unique_ptr<visualization::DrawableBase> ToDrawable() const override;
 
 private:

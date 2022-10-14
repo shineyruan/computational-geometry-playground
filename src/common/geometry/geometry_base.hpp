@@ -20,10 +20,12 @@ class GeometryBase {
 public:
   GeometryBase() = default;
   GeometryBase(GeometryType type) : type_(type) {}
+  virtual ~GeometryBase() = default;
 
   GeometryType Type() const { return type_; }
 
   virtual std::unique_ptr<visualization::DrawableBase> ToDrawable() const = 0;
+  virtual size_t Size() const = 0;
 
 protected:
   GeometryType type_;
