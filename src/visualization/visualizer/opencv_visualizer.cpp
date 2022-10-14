@@ -47,7 +47,7 @@ void OpenCVVisualizer::DrawPointSet(cv::Mat& canvas,
                                     const Eigen::Vector2d scaling) const {
   const PointSet* point_set = dynamic_cast<const PointSet*>(drawable);
   if (!point_set) {
-    spdlog::error("Invalid {} object!", ToString(drawable->Type()));
+    SPDLOG_ERROR("Invalid {} object!", ToString(drawable->Type()));
     return;
   }
 
@@ -67,7 +67,7 @@ void OpenCVVisualizer::DrawLineString(cv::Mat& canvas,
                                       const Eigen::Vector2d scaling) const {
   const LineString* line_string = dynamic_cast<const LineString*>(drawable);
   if (!line_string) {
-    spdlog::error("Invalid {} object!", ToString(drawable->Type()));
+    SPDLOG_ERROR("Invalid {} object!", ToString(drawable->Type()));
     return;
   }
 

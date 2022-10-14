@@ -16,7 +16,7 @@
 using namespace cgzr;
 
 int main() {
-  spdlog::info("Hello!");
+  SPDLOG_INFO("Hello!");
 
   visualization::OpenCVVisualizer visualizer;
   auto line_string = std::make_unique<visualization::LineString>();
@@ -36,7 +36,7 @@ int main() {
 
   visualizer.Visualize();
 
-  spdlog::info("Bye!");
+  SPDLOG_INFO("Bye!");
 
   return 0;
 }

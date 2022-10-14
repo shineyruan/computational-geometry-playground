@@ -39,13 +39,13 @@ bool LineString::UpdateEdges(
   // sanity check
   for (const auto& edge : edges) {
     if (edge.first >= vert_len) {
-      spdlog::error("1st index of edge {} is greater than vertex number {}",
-                    edge.first, vert_len);
+      SPDLOG_ERROR("1st index of edge {} is greater than vertex number {}",
+                   edge.first, vert_len);
       return false;
     }
     if (edge.second >= vert_len) {
-      spdlog::error("2nd index of edge {} is greater than vertex number {}",
-                    edge.second, vert_len);
+      SPDLOG_ERROR("2nd index of edge {} is greater than vertex number {}",
+                   edge.second, vert_len);
       return false;
     }
   }
@@ -58,14 +58,14 @@ bool LineString::AddEdge(Eigen::Vector2d p1, Eigen::Vector2d p2) {
   // sanity check
   auto p1_ptr = std::find(vertices_.begin(), vertices_.end(), p1);
   if (p1_ptr == vertices_.end()) {
-    spdlog::error("p1 is not a vertex: {}", p1.transpose());
+    SPDLOG_ERROR("p1 is not a vertex: {}", p1.transpose());
     return false;
   }
   size_t p1_idx = p1_ptr - vertices_.begin();
 
   auto p2_ptr = std::find(vertices_.begin(), vertices_.end(), p2);
   if (std::find(vertices_.begin(), vertices_.end(), p2) == vertices_.end()) {
-    spdlog::error("p2 is not a vertex: {}", p2.transpose());
+    SPDLOG_ERROR("p2 is not a vertex: {}", p2.transpose());
     return false;
   }
   size_t p2_idx = p2_ptr - vertices_.begin();
@@ -78,11 +78,11 @@ bool LineString::AddEdge(Eigen::Vector2d p1, Eigen::Vector2d p2) {
 
 bool LineString::AddEdge(size_t p1_idx, size_t p2_idx) {
   if (p1_idx >= vertices_.size()) {
-    spdlog::error("p1_idx {} out of bound {}", p1_idx, vertices_.size());
+    SPDLOG_ERROR("p1_idx {} out of bound {}", p1_idx, vertices_.size());
     return false;
   }
   if (p2_idx >= vertices_.size()) {
-    spdlog::error("p2_idx {} out of bound {}", p2_idx, vertices_.size());
+    SPDLOG_ERROR("p2_idx {} out of bound {}", p2_idx, vertices_.size());
     return false;
   }
 
@@ -99,14 +99,14 @@ const std::vector<Eigen::Vector2d>& LineString::Vertices() const {
 bool LineString::IsEdge(Eigen::Vector2d p1, Eigen::Vector2d p2) const {
   auto p1_ptr = std::find(vertices_.begin(), vertices_.end(), p1);
   if (p1_ptr == vertices_.end()) {
-    spdlog::error("p1 is not a vertex: {}", p1.transpose());
+    SPDLOG_ERROR("p1 is not a vertex: {}", p1.transpose());
     return false;
   }
   size_t p1_idx = p1_ptr - vertices_.begin();
 
   auto p2_ptr = std::find(vertices_.begin(), vertices_.end(), p2);
   if (std::find(vertices_.begin(), vertices_.end(), p2) == vertices_.end()) {
-    spdlog::error("p2 is not a vertex: {}", p2.transpose());
+    SPDLOG_ERROR("p2 is not a vertex: {}", p2.transpose());
     return false;
   }
   size_t p2_idx = p2_ptr - vertices_.begin();
