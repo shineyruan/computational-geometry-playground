@@ -8,6 +8,7 @@
 
 namespace cgzr {
 
+// TODO refactor points as point
 class Points : public GeometryBase {
 public:
   Points() : GeometryBase(GeometryType::POINTS) {}
@@ -16,6 +17,9 @@ public:
 
   // random initialization with designated size
   Points(size_t num_points);
+
+  // get point coordinates
+  const std::vector<Eigen::Vector2d>& GetCoordinates() const;
 
   size_t Size() const override { return positions_.size(); }
   std::unique_ptr<GeometryBase> Clone() const override;
