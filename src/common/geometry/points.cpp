@@ -4,6 +4,10 @@
 
 namespace cgzr {
 
+std::unique_ptr<GeometryBase> Points::Clone() const {
+  return std::make_unique<Points>(positions_);
+}
+
 Points::Points(size_t num_points) : GeometryBase(GeometryType::POINTS) {
   positions_.reserve(num_points);
   for (size_t i = 0; i < num_points; ++i) {

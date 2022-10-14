@@ -24,8 +24,10 @@ public:
 
   GeometryType Type() const { return type_; }
 
-  virtual std::unique_ptr<visualization::DrawableBase> ToDrawable() const = 0;
   virtual size_t Size() const = 0;
+  virtual std::unique_ptr<GeometryBase> Clone() const = 0;
+
+  virtual std::unique_ptr<visualization::DrawableBase> ToDrawable() const = 0;
 
 protected:
   GeometryType type_;

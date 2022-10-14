@@ -18,6 +18,7 @@ public:
   Points(size_t num_points);
 
   size_t Size() const override { return positions_.size(); }
+  std::unique_ptr<GeometryBase> Clone() const override;
 
   std::unique_ptr<visualization::DrawableBase> ToDrawable() const override;
 
