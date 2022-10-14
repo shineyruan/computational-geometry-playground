@@ -9,8 +9,9 @@ namespace cgzr {
 class SolverBase {
 public:
   SolverBase(SolverType type) : type_(type) {}
+  virtual ~SolverBase() = default;
 
-  virtual std::unique_ptr<GeometryBase> Solve() const = 0;
+  virtual std::vector<std::unique_ptr<GeometryBase>> Solve() const = 0;
 
 protected:
   SolverType type_;
