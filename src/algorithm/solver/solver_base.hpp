@@ -19,7 +19,9 @@ public:
   SolverBase(SolverType type) : type_(type) {}
   virtual ~SolverBase() = default;
 
-  virtual std::vector<std::unique_ptr<GeometryBase>> Solve() const = 0;
+  virtual std::vector<std::unique_ptr<GeometryBase>> Solve(
+      const std::vector<std::unique_ptr<GeometryBase>>& in_geometries)
+      const = 0;
 
 protected:
   SolverType type_;

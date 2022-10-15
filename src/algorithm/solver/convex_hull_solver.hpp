@@ -1,20 +1,18 @@
 #ifndef __ALGORITHM_CONVEX_HULL_SOLVER__HPP__
 #define __ALGORITHM_CONVEX_HULL_SOLVER__HPP__
 
-#include "common/geometry/points.hpp"
+#include "common/geometry/points2d.hpp"
 #include "solver_base.hpp"
 
 namespace cgzr {
 
 class ConvexHullSolver : public SolverBase {
 public:
-  ConvexHullSolver(const Points* points = nullptr)
-      : SolverBase(SolverType::CONVEX_HULL), points_(points) {}
+  ConvexHullSolver() : SolverBase(SolverType::CONVEX_HULL) {}
 
-  std::vector<std::unique_ptr<GeometryBase>> Solve() const override;
-
-private:
-  const Points* points_{nullptr};
+  std::vector<std::unique_ptr<GeometryBase>> Solve(
+      const std::vector<std::unique_ptr<GeometryBase>>& in_geometries)
+      const override;
 };
 
 }  // namespace cgzr
