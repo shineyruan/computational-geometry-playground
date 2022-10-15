@@ -1,4 +1,4 @@
-#include "lines_2d.hpp"
+#include "lines2d.hpp"
 
 #include <spdlog/spdlog.h>
 
@@ -21,7 +21,7 @@ void Lines2D::UpdatePoints(const std::vector<Eigen::Vector2d>& endpoints) {
   endpoints_ = endpoints;
 }
 
-bool Lines2D::UpdateLineSegments(
+bool Lines2D::UpdateLineAsIndices(
     const std::vector<std::pair<size_t, size_t>>& lines) {
   size_t num_points = endpoints_.size();
 

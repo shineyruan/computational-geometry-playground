@@ -19,7 +19,7 @@ public:
   std::unique_ptr<visualization::DrawableBase> ToDrawable() const override;
 
   void UpdatePoints(const std::vector<Eigen::Vector2d>& endpoints);
-  bool UpdateLineSegments(const std::vector<std::pair<size_t, size_t>>& lines);
+  bool UpdateLineAsIndices(const std::vector<std::pair<size_t, size_t>>& lines);
 
 private:
   std::vector<Eigen::Vector2d> endpoints_;
