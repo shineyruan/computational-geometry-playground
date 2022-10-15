@@ -1,25 +1,25 @@
-#include "points.hpp"
+#include "points2d.hpp"
 
 #include "visualization/drawable/point_set.hpp"
 
 namespace cgzr {
 
-std::unique_ptr<GeometryBase> Points::Clone() const {
-  return std::make_unique<Points>(positions_);
+std::unique_ptr<GeometryBase> Points2d::Clone() const {
+  return std::make_unique<Points2d>(positions_);
 }
 
-const std::vector<Eigen::Vector2d>& Points::GetCoordinates() const {
+const std::vector<Eigen::Vector2d>& Points2d::AsVector2ds() const {
   return positions_;
 }
 
-Points::Points(size_t num_points) : GeometryBase(GeometryType::POINTS) {
+Points2d::Points2d(size_t num_points) : GeometryBase(GeometryType::POINTS_2D) {
   positions_.reserve(num_points);
   for (size_t i = 0; i < num_points; ++i) {
     positions_.push_back(Eigen::Vector2d::Random());
   }
 }
 
-std::unique_ptr<visualization::DrawableBase> Points::ToDrawable() const {
+std::unique_ptr<visualization::DrawableBase> Points2d::ToDrawable() const {
   auto point_set = std::make_unique<visualization::PointSet>();
   point_set->UpdateVertices(positions_);
   return point_set;
