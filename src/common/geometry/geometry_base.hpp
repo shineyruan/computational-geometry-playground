@@ -30,6 +30,7 @@ public:
   virtual std::unique_ptr<visualization::DrawableBase> ToDrawable() const = 0;
 
 public:
+  static std::unique_ptr<GeometryBase> Create(GeometryType type);
   static std::unique_ptr<GeometryBase> CreateRandom(GeometryType type,
                                                     size_t size);
 
