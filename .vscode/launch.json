@@ -22,12 +22,19 @@
           }
         ]
       },
-      "osx": {
-        "MIMode": "lldb"
-      },
       "logging": {
-        "programOutput": false
+        "programOutput": true
       },
+      "preLaunchTask": "debug_build"
+    },
+    {
+      "name": "Debug Launch (CodeLLDB)",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/bin/cg_playground",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "internalConsoleOptions": "openOnSessionStart",
       "preLaunchTask": "debug_build"
     },
     {

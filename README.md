@@ -32,6 +32,8 @@ mkdir build && cd build
 conan install ../conanfile_windows.txt --build=opencv
 ```
 
+**Note. VSCode debugging on macOS requires the use of extension `CodeLLDB`. Users shall have it installed in the workspace and use "Debug Launch (CodeLLDB) to launch the program.**
+
 #### On Linux (Ubuntu)
 
 Linux's version of OpenCV depends on GTK 2.0+ to provide GUI facilities. Also there is a known issue that [Conan defaults to `libstdc++` in the generated profile which only supports GCC ABI with version <5.0.](https://docs.conan.io/en/latest/howtos/manage_gcc_abi.html#manage-gcc-abi) We need to manually specify the new GCC ABI with the following command:
