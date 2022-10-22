@@ -11,8 +11,7 @@ public:
   ConvexHullSolver() : SolverBase(SolverType::CONVEX_HULL) {}
 
   std::vector<std::unique_ptr<GeometryBase>> Solve(
-      const std::vector<std::unique_ptr<GeometryBase>>& in_geometries)
-      const override;
+      const std::vector<const GeometryBase*>& in_geometries) const override;
 };
 
 }  // namespace cgzr

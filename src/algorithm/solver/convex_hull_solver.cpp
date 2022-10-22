@@ -10,14 +10,14 @@ namespace {
 // For Convex Hull, there must be only one input geometry, and it must be
 // Points2d.
 const Points2d* ExtractInput(
-    const std::vector<std::unique_ptr<GeometryBase>>& in_geometries) {
+    const std::vector<const GeometryBase*>& in_geometries) {
   // 1. Check input size
   if (in_geometries.size() != 1) {
     SPDLOG_ERROR("input does not contain only 1 geometry");
     return nullptr;
   }
   // 2. Check if it's Point2d
-  auto points_2d = dynamic_cast<const Points2d*>(in_geometries.front().get());
+  auto points_2d = dynamic_cast<const Points2d*>(in_geometries.front());
   if (!points_2d) {
     SPDLOG_ERROR("input {} is not correct type {}",
                  ToString(GeometryType::POINTS_2D),
@@ -35,7 +35,7 @@ const Points2d* ExtractInput(
 }  // namespace
 
 std::vector<std::unique_ptr<GeometryBase>> ConvexHullSolver::Solve(
-    const std::vector<std::unique_ptr<GeometryBase>>& in_geometries) const {
+    const std::vector<const GeometryBase*>& in_geometries) const {
   std::vector<std::unique_ptr<GeometryBase>> ret;
 
   // 0. Input check
