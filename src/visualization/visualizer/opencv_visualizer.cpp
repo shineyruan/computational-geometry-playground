@@ -102,7 +102,7 @@ void OpenCVVisualizer::DrawLineString(cv::Mat& canvas,
 
 std::pair<Eigen::Vector2d, Eigen::Vector2d>
 OpenCVVisualizer::ComputeOffsetAndScaling() const {
-  Eigen::Vector2d offset = -world_min_;
+  Eigen::Vector2d offset = world_min_;
   double scaling = std::min(IMAGE_WIDTH / (world_max_ - world_min_).x(),
                             IMAGE_HEIGHT / (world_max_ - world_min_).y());
   return std::make_pair(offset, Eigen::Vector2d(scaling, scaling));
