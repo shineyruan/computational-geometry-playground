@@ -9,6 +9,8 @@
 
 #include <spdlog/spdlog.h>
 
+#include "algorithm/solver/convex_hull_solver.hpp"
+#include "common/geometry/points2d.hpp"
 #include "visualization/drawable/line_string.hpp"
 #include "visualization/drawable/point_set.hpp"
 #include "visualization/visualizer/opencv_visualizer.hpp"
@@ -18,22 +20,27 @@ using namespace cgzr;
 int main() {
   SPDLOG_INFO("Hello!");
 
+  SPDLOG_INFO("Creating 3 points...");
+  auto points_2d = GeometryBase::CreateRandom(GeometryType::POINTS_2D, 3);
+
+  SPDLOG_INFO("Creating convex hull solver...");
+  auto convex_hull_solver = std::make_unique<ConvexHullSolver>();
+
+  SPDLOG_INFO("Collecting input geometries for solver...");
+  std::vector<const GeometryBase*> input_geometries{points_2d.get()};
+
+  SPDLOG_INFO("Solving convex hull...");
+  auto results = convex_hull_solver->Solve({input_geometries});
+
+  SPDLOG_INFO("Creating visualizer...");
   visualization::OpenCVVisualizer visualizer;
-  auto line_string = std::make_unique<visualization::LineString>();
-  auto point_set = std::make_unique<visualization::PointSet>();
 
-  std::vector<Eigen::Vector2d> points{
-      {0., 10.}, {10., 5.}, {5., 10.}, {5., 5.}};
-  point_set->UpdateVertices(std::move(points));
+  SPDLOG_INFO("Adding items to visualizer...");
+  for (const auto& out_geometry : results) {
+    visualizer.Add(out_geometry->ToDrawable());
+  }
 
-  std::vector<Eigen::Vector2d> vertices{{0., 3.}, {3., 0.}, {3., 3.}, {0., 0.}};
-  std::vector<std::pair<size_t, size_t>> edges{{0, 1}, {1, 2}, {2, 3}, {1, 3}};
-  line_string->UpdateVertices(std::move(vertices));
-  line_string->UpdateEdges(std::move(edges));
-
-  visualizer.Add(std::move(line_string));
-  visualizer.Add(std::move(point_set));
-
+  SPDLOG_INFO("Visualizing results...");
   visualizer.Visualize();
 
   SPDLOG_INFO("Bye!");
