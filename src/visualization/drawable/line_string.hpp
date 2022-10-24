@@ -8,7 +8,8 @@ namespace visualization {
 
 class LineString : public DrawableBase {
 public:
-  LineString() : DrawableBase(DrawableType::LINE_STRING) {}
+  LineString(ColorRGB color = ColorRGB())
+      : DrawableBase(DrawableType::LINE_STRING, color) {}
 
   bool UpdateVertices(const std::vector<Eigen::Vector2d>& vertices);
   const std::vector<Eigen::Vector2d>& Vertices() const;

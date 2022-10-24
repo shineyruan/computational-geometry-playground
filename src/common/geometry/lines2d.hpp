@@ -16,7 +16,8 @@ public:
 
   size_t Size() const override { return lines_.size(); }
   std::unique_ptr<GeometryBase> Clone() const override;
-  std::unique_ptr<visualization::DrawableBase> ToDrawable() const override;
+  std::unique_ptr<visualization::DrawableBase> ToDrawable(
+      ColorRGB color = ColorRGB()) const override;
 
   void UpdatePoints(const std::vector<Eigen::Vector2d>& endpoints);
   bool UpdateLineAsIndices(const std::vector<std::pair<size_t, size_t>>& lines);

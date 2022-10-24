@@ -18,7 +18,8 @@ private:
   static constexpr unsigned int IMAGE_WIDTH_BUFFER = 10;
   static constexpr unsigned int IMAGE_HEIGHT_BUFFER = 10;
   static constexpr int LINE_THICKNESS = 1;
-  static constexpr int POINT_RADIUS = 2;
+  static constexpr int POINT_RADIUS = 5;
+  static constexpr int POINT_RADIUS_LINE_STRING = 2;
 
   void DrawPointSet(cv::Mat& canvas, const DrawableBase* drawable,
                     const Eigen::Vector2d offset,

@@ -27,7 +27,8 @@ public:
   virtual size_t Size() const = 0;
   virtual std::unique_ptr<GeometryBase> Clone() const = 0;
 
-  virtual std::unique_ptr<visualization::DrawableBase> ToDrawable() const = 0;
+  virtual std::unique_ptr<visualization::DrawableBase> ToDrawable(
+      ColorRGB color = ColorRGB()) const = 0;
 
 public:
   static std::unique_ptr<GeometryBase> Create(GeometryType type);

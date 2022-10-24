@@ -10,8 +10,9 @@ std::unique_ptr<GeometryBase> Lines2D::Clone() const {
   return std::make_unique<Lines2D>(endpoints_, lines_);
 }
 
-std::unique_ptr<visualization::DrawableBase> Lines2D::ToDrawable() const {
-  auto line_string = std::make_unique<visualization::LineString>();
+std::unique_ptr<visualization::DrawableBase> Lines2D::ToDrawable(
+    ColorRGB color) const {
+  auto line_string = std::make_unique<visualization::LineString>(color);
   line_string->UpdateVertices(endpoints_);
   line_string->UpdateEdges(lines_);
   return line_string;

@@ -8,7 +8,8 @@ namespace visualization {
 
 class PointSet : public DrawableBase {
 public:
-  PointSet() : DrawableBase(DrawableType::POINT_SET) {}
+  PointSet(ColorRGB color = ColorRGB())
+      : DrawableBase(DrawableType::POINT_SET, color) {}
 
   bool UpdateVertices(const std::vector<Eigen::Vector2d>& vertices);
   const std::vector<Eigen::Vector2d>& Vertices() const;

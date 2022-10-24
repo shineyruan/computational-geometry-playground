@@ -19,8 +19,9 @@ Points2d::Points2d(size_t num_points) : GeometryBase(GeometryType::POINTS_2D) {
   }
 }
 
-std::unique_ptr<visualization::DrawableBase> Points2d::ToDrawable() const {
-  auto point_set = std::make_unique<visualization::PointSet>();
+std::unique_ptr<visualization::DrawableBase> Points2d::ToDrawable(
+    ColorRGB color) const {
+  auto point_set = std::make_unique<visualization::PointSet>(color);
   point_set->UpdateVertices(positions_);
   return point_set;
 }

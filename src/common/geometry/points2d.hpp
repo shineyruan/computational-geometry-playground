@@ -23,7 +23,8 @@ public:
   size_t Size() const override { return positions_.size(); }
   std::unique_ptr<GeometryBase> Clone() const override;
 
-  std::unique_ptr<visualization::DrawableBase> ToDrawable() const override;
+  std::unique_ptr<visualization::DrawableBase> ToDrawable(
+      ColorRGB color = ColorRGB()) const override;
 
 private:
   std::vector<Eigen::Vector2d> positions_;

@@ -13,14 +13,17 @@
 
 #include "drawable_type.hpp"
 #include "utils/include_eigen.hpp"
+#include "visualization/color/colors.hpp"
 
 namespace cgzr {
 namespace visualization {
 
 class DrawableBase {
 public:
-  DrawableBase(DrawableType type = DrawableType::UNSUPPORTED)
+  DrawableBase(DrawableType type = DrawableType::UNSUPPORTED,
+               ColorRGB color = ColorRGB())
       : type_(type),
+        color_(color),
         min_coords_(-std::numeric_limits<double>::infinity(),
                     -std::numeric_limits<double>::infinity()),
         max_coords_(std::numeric_limits<double>::infinity(),
@@ -30,6 +33,7 @@ public:
   DrawableType Type() const { return type_; }
   Eigen::Vector2d MinBound() const { return min_coords_; }
   Eigen::Vector2d MaxBound() const { return max_coords_; }
+  ColorRGB Color() const { return color_; }
 
   bool HasMinBound() const {
     return (min_coords_.x() > -std::numeric_limits<double>::infinity()) &&
@@ -43,6 +47,9 @@ public:
 
 protected:
   DrawableType type_;
+
+  // color
+  ColorRGB color_;
 
   // shape boundary
   Eigen::Vector2d min_coords_;

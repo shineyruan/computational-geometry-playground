@@ -10,6 +10,13 @@
 #include "visualization/drawable/point_set.hpp"
 
 namespace cgzr {
+
+namespace {
+cv::Scalar ToCvColor(ColorRGB color) {
+  return cv::Scalar(color.b, color.g, color.r);
+}
+}  // namespace
+
 namespace visualization {
 
 void OpenCVVisualizer::Visualize() const {
@@ -57,7 +64,7 @@ void OpenCVVisualizer::DrawPointSet(cv::Mat& canvas,
     cv::Point2i cv_vert{vert_y, vert_x};
     cv::circle(canvas,
                cv_vert + cv::Point2i(IMAGE_HEIGHT_BUFFER, IMAGE_WIDTH_BUFFER),
-               POINT_RADIUS, cv::Scalar(0, 0, 255), -1);
+               POINT_RADIUS, ToCvColor(drawable->Color()), -1);
   }
 }
 
@@ -78,7 +85,7 @@ void OpenCVVisualizer::DrawLineString(cv::Mat& canvas,
     cv::Point2i cv_vert{vert_y, vert_x};
     cv::circle(canvas,
                cv_vert + cv::Point2i(IMAGE_HEIGHT_BUFFER, IMAGE_WIDTH_BUFFER),
-               POINT_RADIUS, cv::Scalar(0, 0, 255), -1);
+               POINT_RADIUS_LINE_STRING, ToCvColor(drawable->Color()), -1);
   }
 
   // visualize lines
@@ -96,7 +103,7 @@ void OpenCVVisualizer::DrawLineString(cv::Mat& canvas,
     cv::line(canvas,
              cv_p1 + cv::Point2i(IMAGE_HEIGHT_BUFFER, IMAGE_WIDTH_BUFFER),
              cv_p2 + cv::Point2i(IMAGE_HEIGHT_BUFFER, IMAGE_WIDTH_BUFFER),
-             cv::Scalar(255, 0, 0), LINE_THICKNESS, cv::LINE_AA);
+             ToCvColor(drawable->Color()), LINE_THICKNESS, cv::LINE_AA);
   }
 }
 
