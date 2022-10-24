@@ -37,8 +37,9 @@ int main() {
 
   SPDLOG_INFO("Adding items to visualizer...");
   for (const auto& out_geometry : results) {
-    visualizer.Add(out_geometry->ToDrawable());
+    visualizer.Add(out_geometry->ToDrawable(colors::COLOR_RED));
   }
+  visualizer.Add(points_2d->ToDrawable(colors::COLOR_BLACK));
 
   SPDLOG_INFO("Visualizing results...");
   visualizer.Visualize();
