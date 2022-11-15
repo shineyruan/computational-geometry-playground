@@ -1,26 +1,26 @@
 cmake_minimum_required(VERSION 3.15)
 
-# add eigen examples
-add_executable(example_eigen example_eigen.cpp)
-target_link_libraries(example_eigen PUBLIC
-  ${CONAN_LIBS_EIGEN}
-  ${CONAN_LIBS_SPDLOG}
-  ${CONAN_LIBS_FMT}
+include_directories(
+  ${CMAKE_SOURCE_DIR}/src
 )
 
-# add opencv examples
-add_executable(example_opencv example_opencv.cpp)
-target_link_libraries(example_opencv PUBLIC
-  ${CONAN_LIBS_OPENCV}
+# convex hull solver
+add_executable(convex_hull convex_hull.cpp)
+target_link_libraries(convex_hull PRIVATE
+  ${PROJ_NAME}
 )
-if (UNIX AND NOT APPLE)
-  target_link_libraries(example_opencv PUBLIC
-    ${GTK_LIBRARIES}
-  )
-  target_include_directories(example_opencv PUBLIC
-    ${GTK_INCLUDE_DIRS}
-  )
-endif()
-target_include_directories(example_opencv PUBLIC
-  ${CONAN_INCLUDE_DIRS_OPENCV}
+target_compile_options(convex_hull PRIVATE
+  $<$<CXX_COMPILER_ID:GNU>:
+  -Wall
+  -Wextra
+  -Werror>
+  $<$<CXX_COMPILER_ID:AppleClang>:
+  -Wall
+  -Wextra
+  -Werror>
+  $<$<CXX_COMPILER_ID:MSVC>:
+  /WX
+  /W4
+  /wd4127
+  /wd4459>
 )

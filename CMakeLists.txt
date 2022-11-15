@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(cg_playground)
+project(cgsolver)
 set(PROJ_NAME ${PROJECT_NAME}) # avoid confusion with Conan pkgs
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
@@ -44,3 +44,4 @@ endif()
 # --------------------------
 add_subdirectory(src)
 add_subdirectory(examples)
+add_subdirectory(test)

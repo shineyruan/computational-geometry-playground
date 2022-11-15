@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-add_executable(${PROJ_NAME})
+add_library(${PROJ_NAME})
 
 # Source files
 file(GLOB_RECURSE SOURCE_FILES *.cpp *.c)
