@@ -21,7 +21,7 @@ int main() {
   SPDLOG_INFO("Hello!");
 
   SPDLOG_INFO("Creating 3 points...");
-  auto points_2d = GeometryBase::CreateRandom(GeometryType::POINTS_2D, 3);
+  auto points_2d = GeometryBase::CreateRandom(GeometryType::POINTS_2D, 100);
 
   SPDLOG_INFO("Creating convex hull solver...");
   auto convex_hull_solver = std::make_unique<ConvexHullSolver>();
