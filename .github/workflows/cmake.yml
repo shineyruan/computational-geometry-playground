@@ -23,12 +23,12 @@ jobs:
 
       - name: Get lower case OS string
         id: string
-        uses: ASzc/change-string-case-action@v2
+        uses: ASzc/change-string-case-action@v5
         with:
           string: ${{ runner.os }}
 
       - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.2
+        uses: hendrikmuhs/ccache-action@v1.2.5
         with:
           key: ${{ matrix.os }}-${{ matrix.type }}
 
