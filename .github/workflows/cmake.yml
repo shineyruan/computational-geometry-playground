@@ -55,7 +55,7 @@ jobs:
 
       - name: Install pkg dependency (macOS)
         if: steps.string.outputs.lowercase == 'macos'
-        run: conan install ${{ github.workspace }}/conanfile_macos.txt -s build_type=${{ matrix.type }} --install-folder=${{ github.workspace }}/build --build=opencv
+        run: conan install ${{ github.workspace }}/conanfile_macos.txt -s build_type=${{ matrix.type }} --install-folder=${{ github.workspace }}/build --build=opencv --build=spdlog --build=fmt --build=zlib
 
       - name: Configure CMake
         # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
