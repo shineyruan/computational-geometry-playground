@@ -1,4 +1,4 @@
-[![CMake Build](https://github.com/shineyruan/computational-geometry-playground/blob/main/.github/workflows/cmake.yml/badge.svg)](https://github.com/shineyruan/computational-geometry-playground/blob/main/.github/workflows/cmake.yml)
+[![CMake Build](https://github.com/shineyruan/computational-geometry-playground/actions/workflows/cmake.yml/badge.svg)](https://github.com/shineyruan/computational-geometry-playground/actions/workflows/cmake.yml)
 
 # computational-geometry-playground
 
