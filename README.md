@@ -1,3 +1,5 @@
+[![CMake Build](https://github.com/shineyruan/computational-geometry-playground/blob/main/.github/workflows/cmake.yml/badge.svg)](https://github.com/shineyruan/computational-geometry-playground/blob/main/.github/workflows/cmake.yml)
+
 # computational-geometry-playground
 
 A C++ playground for computational geometry algorithms &amp; plotting.
