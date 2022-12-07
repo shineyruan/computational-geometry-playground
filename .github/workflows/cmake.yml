@@ -47,7 +47,7 @@ jobs:
 
       - name: Install system packages (Linux)
         if: steps.string.outputs.lowercase == 'linux'
-        run: sudo apt install libgtk2.0-dev
+        run: sudo apt update; sudo apt install libgtk2.0-dev
 
       - name: Install pkg dependency (Linux)
         if: steps.string.outputs.lowercase == 'linux'
