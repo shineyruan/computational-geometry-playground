@@ -1,5 +1,5 @@
-#ifndef __UTILS_EIGEN_INCLUDE__HPP__
-#define __UTILS_EIGEN_INCLUDE__HPP__
+#ifndef SRC_UTILS_INCLUDE_EIGEN_HPP_
+#define SRC_UTILS_INCLUDE_EIGEN_HPP_
 
 // only for M1 Mac's VSCode intellisense completion
 #ifdef __APPLE__
@@ -18,4 +18,4 @@
 
 #include <Eigen/Dense>
 
-#endif /* __UTILS_EIGEN_INCLUDE__HPP__ */
+#endif  // SRC_UTILS_INCLUDE_EIGEN_HPP_

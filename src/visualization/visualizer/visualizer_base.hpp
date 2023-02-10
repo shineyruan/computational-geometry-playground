@@ -1,5 +1,5 @@
-#ifndef __VISUALIZATION_VISUALIZER_VISUALIZER_BASE__HPP__
-#define __VISUALIZATION_VISUALIZER_VISUALIZER_BASE__HPP__
+#ifndef SRC_VISUALIZATION_VISUALIZER_VISUALIZER_BASE_HPP_
+#define SRC_VISUALIZATION_VISUALIZER_VISUALIZER_BASE_HPP_
 
 /**
  * @file visualizer_base.hpp
@@ -18,7 +18,7 @@ namespace cgzr {
 namespace visualization {
 
 class VisualizerBase {
-public:
+ public:
   VisualizerBase()
       : world_min_(-std::numeric_limits<double>::infinity(),
                    -std::numeric_limits<double>::infinity()),
@@ -32,7 +32,7 @@ public:
    */
   void Add(std::unique_ptr<DrawableBase> drawable);
 
-protected:
+ protected:
   std::vector<std::unique_ptr<DrawableBase>> drawables_;
   std::unordered_map<int, std::vector<const DrawableBase*>> drawable_by_type_;
 
@@ -46,4 +46,4 @@ protected:
 }  // namespace visualization
 }  // namespace cgzr
 
-#endif /* __VISUALIZATION_VISUALIZER_VISUALIZER_BASE__HPP__ */
+#endif  // SRC_VISUALIZATION_VISUALIZER_VISUALIZER_BASE_HPP_

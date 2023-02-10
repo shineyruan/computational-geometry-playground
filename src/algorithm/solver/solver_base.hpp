@@ -1,5 +1,5 @@
-#ifndef __ALGORITHM_SOLVER_BASE__HPP__
-#define __ALGORITHM_SOLVER_BASE__HPP__
+#ifndef SRC_ALGORITHM_SOLVER_SOLVER_BASE_HPP_
+#define SRC_ALGORITHM_SOLVER_SOLVER_BASE_HPP_
 
 /**
  * @file solver_base.hpp
@@ -15,17 +15,17 @@
 namespace cgzr {
 
 class SolverBase {
-public:
+ public:
   SolverBase(SolverType type) : type_(type) {}
   virtual ~SolverBase() = default;
 
   virtual std::vector<std::unique_ptr<GeometryBase>> Solve(
       const std::vector<const GeometryBase*>& in_geometries) const = 0;
 
-protected:
+ protected:
   SolverType type_;
 };
 
 }  // namespace cgzr
 
-#endif /* __ALGORITHM_SOLVER_BASE__HPP__ */
+#endif  // SRC_ALGORITHM_SOLVER_SOLVER_BASE_HPP_

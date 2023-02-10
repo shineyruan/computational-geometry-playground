@@ -1,5 +1,5 @@
-#ifndef __VISUALIZATION_COLOR_COLORS__HPP__
-#define __VISUALIZATION_COLOR_COLORS__HPP__
+#ifndef SRC_VISUALIZATION_COLOR_COLORS_HPP_
+#define SRC_VISUALIZATION_COLOR_COLORS_HPP_
 
 namespace cgzr {
 // RGB values are from [0.--255.]
@@ -25,4 +25,4 @@ extern const ColorRGB COLOR_MAGENTA;
 
 }  // namespace cgzr
 
-#endif /* __VISUALIZATION_COLOR_COLORS__HPP__ */
+#endif  // SRC_VISUALIZATION_COLOR_COLORS_HPP_

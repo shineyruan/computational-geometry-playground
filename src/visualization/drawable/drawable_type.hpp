@@ -1,5 +1,5 @@
-#ifndef __VISUALIZATION_DRAWABLE_DRAWABLE_TYPE__HPP__
-#define __VISUALIZATION_DRAWABLE_DRAWABLE_TYPE__HPP__
+#ifndef SRC_VISUALIZATION_DRAWABLE_DRAWABLE_TYPE_HPP_
+#define SRC_VISUALIZATION_DRAWABLE_DRAWABLE_TYPE_HPP_
 
 #include <string>
 
@@ -18,7 +18,7 @@ inline std::string ToString(DrawableType type) {
       ret = "line string";
       break;
 
-    case DrawableType::UNSUPPORTED:;
+    case DrawableType::UNSUPPORTED:
       ret = "unsupported";
       break;
 
@@ -31,4 +31,4 @@ inline std::string ToString(DrawableType type) {
 }
 }  // namespace cgzr
 
-#endif /* __VISUALIZATION_DRAWABLE_DRAWABLE_TYPE__HPP__ */
+#endif  // SRC_VISUALIZATION_DRAWABLE_DRAWABLE_TYPE_HPP_

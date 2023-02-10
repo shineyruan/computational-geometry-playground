@@ -1,5 +1,5 @@
-#ifndef __VISUALIZATION_DRAWABLE_DRAWABLE_BASE__HPP__
-#define __VISUALIZATION_DRAWABLE_DRAWABLE_BASE__HPP__
+#ifndef SRC_VISUALIZATION_DRAWABLE_DRAWABLE_BASE_HPP_
+#define SRC_VISUALIZATION_DRAWABLE_DRAWABLE_BASE_HPP_
 
 /**
  * @file drawable_base.hpp
@@ -19,7 +19,7 @@ namespace cgzr {
 namespace visualization {
 
 class DrawableBase {
-public:
+ public:
   DrawableBase(DrawableType type = DrawableType::UNSUPPORTED,
                ColorRGB color = ColorRGB())
       : type_(type),
@@ -45,7 +45,7 @@ public:
   }
   bool HasBothBounds() const { return HasMinBound() && HasMaxBound(); }
 
-protected:
+ protected:
   DrawableType type_;
 
   // color
@@ -59,4 +59,4 @@ protected:
 }  // namespace visualization
 }  // namespace cgzr
 
-#endif /* __VISUALIZATION_DRAWABLE_DRAWABLE_BASE__HPP__ */
+#endif  // SRC_VISUALIZATION_DRAWABLE_DRAWABLE_BASE_HPP_

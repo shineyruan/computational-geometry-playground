@@ -1,5 +1,5 @@
-#ifndef __COMMON_GEOMETRY_GEOMETRY_TYPES__HPP__
-#define __COMMON_GEOMETRY_GEOMETRY_TYPES__HPP__
+#ifndef SRC_COMMON_GEOMETRY_GEOMETRY_TYPE_HPP_
+#define SRC_COMMON_GEOMETRY_GEOMETRY_TYPE_HPP_
 
 #include <string>
 
@@ -23,4 +23,4 @@ inline std::string ToString(GeometryType type) {
 
 }  // namespace cgzr
 
-#endif /* __COMMON_GEOMETRY_GEOMETRY_TYPES__HPP__ */
+#endif  // SRC_COMMON_GEOMETRY_GEOMETRY_TYPE_HPP_
