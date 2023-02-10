@@ -1,12 +1,12 @@
-#ifndef __COMMON_GEOMETRY_LINES_2D__HPP__
-#define __COMMON_GEOMETRY_LINES_2D__HPP__
+#ifndef SRC_COMMON_GEOMETRY_LINES2D_HPP_
+#define SRC_COMMON_GEOMETRY_LINES2D_HPP_
 
 #include "geometry_base.hpp"
 
 namespace cgzr {
 
 class Lines2D : public GeometryBase {
-public:
+ public:
   Lines2D() : GeometryBase(GeometryType::LINES_2D) {}
   Lines2D(const std::vector<Eigen::Vector2d>& endpoints,
           const std::vector<std::pair<size_t, size_t>>& lines)
@@ -22,11 +22,11 @@ public:
   void UpdatePoints(const std::vector<Eigen::Vector2d>& endpoints);
   bool UpdateLineAsIndices(const std::vector<std::pair<size_t, size_t>>& lines);
 
-private:
+ private:
   std::vector<Eigen::Vector2d> endpoints_;
   std::vector<std::pair<size_t, size_t>> lines_;
 };
 
 }  // namespace cgzr
 
-#endif /* __COMMON_GEOMETRY_LINES_2D__HPP__ */
+#endif  // SRC_COMMON_GEOMETRY_LINES2D_HPP_

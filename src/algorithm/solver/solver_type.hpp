@@ -1,5 +1,5 @@
-#ifndef __ALGORITHM_SOLVER_TYPE__HPP__
-#define __ALGORITHM_SOLVER_TYPE__HPP__
+#ifndef SRC_ALGORITHM_SOLVER_SOLVER_TYPE_HPP_
+#define SRC_ALGORITHM_SOLVER_SOLVER_TYPE_HPP_
 
 namespace cgzr {
 
@@ -7,4 +7,4 @@ enum class SolverType { CONVEX_HULL = 0 };
 
 }
 
-#endif /* __ALGORITHM_SOLVER_TYPE__HPP__ */
+#endif  // SRC_ALGORITHM_SOLVER_SOLVER_TYPE_HPP_

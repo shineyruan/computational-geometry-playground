@@ -1,5 +1,4 @@
 BasedOnStyle: Google
 UseTab: Never
 ColumnLimit: 80
-AccessModifierOffset: -2
 AlignConsecutiveMacros: true

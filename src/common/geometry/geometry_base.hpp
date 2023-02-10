@@ -1,5 +1,5 @@
-#ifndef __COMMON_GEOMETRIC_GEOMETRY_BASE__HPP__
-#define __COMMON_GEOMETRIC_GEOMETRY_BASE__HPP__
+#ifndef SRC_COMMON_GEOMETRY_GEOMETRY_BASE_HPP_
+#define SRC_COMMON_GEOMETRY_GEOMETRY_BASE_HPP_
 
 /**
  * @file geometry_base.hpp
@@ -17,7 +17,7 @@
 namespace cgzr {
 
 class GeometryBase {
-public:
+ public:
   GeometryBase() = default;
   GeometryBase(GeometryType type) : type_(type) {}
   virtual ~GeometryBase() = default;
@@ -30,15 +30,15 @@ public:
   virtual std::unique_ptr<visualization::DrawableBase> ToDrawable(
       ColorRGB color = ColorRGB()) const = 0;
 
-public:
+ public:
   static std::unique_ptr<GeometryBase> Create(GeometryType type);
   static std::unique_ptr<GeometryBase> CreateRandom(GeometryType type,
                                                     size_t size);
 
-protected:
+ protected:
   GeometryType type_;
 };
 
 }  // namespace cgzr
 
-#endif /* __COMMON_GEOMETRIC_GEOMETRY_BASE__HPP__ */
+#endif  // SRC_COMMON_GEOMETRY_GEOMETRY_BASE_HPP_

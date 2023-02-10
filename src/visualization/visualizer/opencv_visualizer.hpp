@@ -1,5 +1,5 @@
-#ifndef __VISUALIZATION_VISUALIZER_OPENCV_VISUALIZER__HPP__
-#define __VISUALIZATION_VISUALIZER_OPENCV_VISUALIZER__HPP__
+#ifndef SRC_VISUALIZATION_VISUALIZER_OPENCV_VISUALIZER_HPP_
+#define SRC_VISUALIZATION_VISUALIZER_OPENCV_VISUALIZER_HPP_
 
 #include <opencv2/core/core.hpp>
 
@@ -9,10 +9,10 @@ namespace cgzr {
 namespace visualization {
 
 class OpenCVVisualizer : public VisualizerBase {
-public:
+ public:
   void Visualize() const override;
 
-private:
+ private:
   static constexpr unsigned int IMAGE_WIDTH = 500;
   static constexpr unsigned int IMAGE_HEIGHT = 500;
   static constexpr unsigned int IMAGE_WIDTH_BUFFER = 10;
@@ -42,4 +42,4 @@ private:
 }  // namespace visualization
 }  // namespace cgzr
 
-#endif /* __VISUALIZATION_VISUALIZER_OPENCV_VISUALIZER__HPP__ */
+#endif  // SRC_VISUALIZATION_VISUALIZER_OPENCV_VISUALIZER_HPP_

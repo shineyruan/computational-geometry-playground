@@ -1,5 +1,5 @@
-#ifndef __VISUALIZATION_DRAWABLE_LINE_STRING__HPP__
-#define __VISUALIZATION_DRAWABLE_LINE_STRING__HPP__
+#ifndef SRC_VISUALIZATION_DRAWABLE_LINE_STRING_HPP_
+#define SRC_VISUALIZATION_DRAWABLE_LINE_STRING_HPP_
 
 #include "drawable_base.hpp"
 
@@ -7,7 +7,7 @@ namespace cgzr {
 namespace visualization {
 
 class LineString : public DrawableBase {
-public:
+ public:
   LineString(ColorRGB color = ColorRGB())
       : DrawableBase(DrawableType::LINE_STRING, color) {}
 
@@ -20,7 +20,7 @@ public:
   bool UpdateEdges(const std::vector<std::pair<size_t, size_t>>& edges);
   const std::vector<std::pair<size_t, size_t>>& Edges() const;
 
-private:
+ private:
   std::vector<Eigen::Vector2d> vertices_;
   std::vector<std::pair<size_t, size_t>> edges_;
   std::vector<std::vector<size_t>> neighbors_;
@@ -29,4 +29,4 @@ private:
 }  // namespace visualization
 }  // namespace cgzr
 
-#endif /* __VISUALIZATION_DRAWABLE_LINE_STRING__HPP__ */
+#endif  // SRC_VISUALIZATION_DRAWABLE_LINE_STRING_HPP_

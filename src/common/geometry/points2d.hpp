@@ -1,5 +1,5 @@
-#ifndef __COMMON_GEOMETRY_POINT2D__HPP__
-#define __COMMON_GEOMETRY_POINT2D__HPP__
+#ifndef SRC_COMMON_GEOMETRY_POINTS2D_HPP_
+#define SRC_COMMON_GEOMETRY_POINTS2D_HPP_
 
 #include <vector>
 
@@ -9,7 +9,7 @@
 namespace cgzr {
 
 class Points2d : public GeometryBase {
-public:
+ public:
   Points2d() : GeometryBase(GeometryType::POINTS_2D) {}
   Points2d(const std::vector<Eigen::Vector2d>& points)
       : GeometryBase(GeometryType::POINTS_2D), positions_(points) {}
@@ -26,10 +26,10 @@ public:
   std::unique_ptr<visualization::DrawableBase> ToDrawable(
       ColorRGB color = ColorRGB()) const override;
 
-private:
+ private:
   std::vector<Eigen::Vector2d> positions_;
 };
 
 }  // namespace cgzr
 
-#endif /* __COMMON_GEOMETRY_POINT2D__HPP__ */
+#endif  // SRC_COMMON_GEOMETRY_POINTS2D_HPP_
