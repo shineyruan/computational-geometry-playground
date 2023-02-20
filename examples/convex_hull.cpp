@@ -30,7 +30,7 @@ int main() {
   std::vector<const GeometryBase*> input_geometries{points_2d.get()};
 
   SPDLOG_INFO("Solving convex hull...");
-  auto results = convex_hull_solver->Solve({input_geometries});
+  auto results = convex_hull_solver->Solve(input_geometries);
 
   SPDLOG_INFO("Creating visualizer...");
   visualization::OpenCVVisualizer visualizer;
