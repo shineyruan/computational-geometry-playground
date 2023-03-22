@@ -41,6 +41,8 @@ jobs:
       - name: Install Conan
         id: conan
         uses: turtlebrowser/get-conan@main
+        with:
+          version: 2.0.2
 
       - name: Conan version
         run: echo "${{ steps.conan.outputs.version }}"
@@ -51,16 +53,16 @@ jobs:
 
       - name: Install pkg dependency (Linux)
         if: steps.string.outputs.lowercase == 'linux'
-        run: conan install ${{ github.workspace }}/conanfile_linux.txt -s build_type=${{ matrix.type }} -s compiler.libcxx=libstdc++11 --install-folder=${{ github.workspace }}/build --build=opencv
+        run: conan install ${{ github.workspace }}/conanfile_linux.txt -s build_type=${{ matrix.type }} -s compiler.libcxx=libstdc++11 --output-folder=${{ github.workspace }}/build --build=missing
 
       - name: Install pkg dependency (macOS)
         if: steps.string.outputs.lowercase == 'macos'
-        run: conan install ${{ github.workspace }}/conanfile_macos.txt -s build_type=${{ matrix.type }} --install-folder=${{ github.workspace }}/build --build=opencv --build=spdlog --build=fmt --build=zlib
+        run: conan install ${{ github.workspace }}/conanfile_macos.txt -s build_type=${{ matrix.type }} --output-folder=${{ github.workspace }}/build --build=missing
 
       - name: Configure CMake
         # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
         # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-        run: cmake -B ${{ github.workspace }}/build -DCMAKE_BUILD_TYPE=${{ matrix.type }} -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
+        run: cmake -B ${{ github.workspace }}/build -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
 
       - name: Build
         # Build your program with the given configuration
