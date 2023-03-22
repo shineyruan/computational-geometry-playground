@@ -47,13 +47,16 @@ jobs:
       - name: Conan version
         run: echo "${{ steps.conan.outputs.version }}"
 
+      - name: Detect Conan profile
+        run: conan profile detect --force
+
       - name: Install system packages (Linux)
         if: steps.string.outputs.lowercase == 'linux'
         run: sudo apt update; sudo apt install libgtk2.0-dev
 
       - name: Install pkg dependency (Linux)
         if: steps.string.outputs.lowercase == 'linux'
-        run: conan install ${{ github.workspace }}/conanfile_linux.txt -s build_type=${{ matrix.type }} -s compiler.libcxx=libstdc++11 --output-folder=${{ github.workspace }}/build --build=missing
+        run: conan install ${{ github.workspace }}/conanfile_linux.txt -s build_type=${{ matrix.type }} --output-folder=${{ github.workspace }}/build --build=missing
 
       - name: Install pkg dependency (macOS)
         if: steps.string.outputs.lowercase == 'macos'
