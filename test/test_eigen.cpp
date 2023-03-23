@@ -10,6 +10,9 @@
 
 #include <Eigen/Dense>
 
+template <>
+struct fmt::formatter<Eigen::Transpose<Eigen::Vector3d>> : ostream_formatter {};
+
 int main(int argc, char const *argv[]) {
   Eigen::Vector3d v;
   v << 1.0, 2.0, 3.0;
