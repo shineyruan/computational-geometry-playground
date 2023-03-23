@@ -1,10 +1,10 @@
 {
   "configurations": [
     {
-      "name": "Debug Launch",
+      "name": "Debug Launch Convex Hull",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/bin/cg_playground",
+      "program": "${workspaceFolder}/build/bin/convex_hull",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
@@ -25,23 +25,27 @@
       "logging": {
         "programOutput": true
       },
-      "preLaunchTask": "debug_build"
+      "preLaunchTask": "debug_build_vcpkg"
     },
     {
-      "name": "Debug Launch (CodeLLDB)",
-      "type": "lldb",
-      "request": "launch",
-      "program": "${workspaceFolder}/build/bin/cg_playground",
-      "args": [],
-      "cwd": "${workspaceFolder}",
-      "internalConsoleOptions": "openOnSessionStart",
-      "preLaunchTask": "debug_build"
-    },
-    {
-      "name": "Release Launch",
+      "name": "Debug Launch Convex Hull (CodeLLDB)",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/bin/cg_playground",
+      "program": "${workspaceFolder}/build/bin/convex_hull",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "internalConsoleOptions": "openOnSessionStart",
+      "MIMode": "lldb",
+      "preLaunchTask": "debug_build_vcpkg"
+    },
+    {
+      "name": "Release Launch Convex Hull",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/bin/convex_hull",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
@@ -61,7 +65,7 @@
       "osx": {
         "MIMode": "lldb"
       },
-      "preLaunchTask": "release_build"
+      "preLaunchTask": "release_build_vcpkg"
     }
   ],
   "version": "2.0.0"
