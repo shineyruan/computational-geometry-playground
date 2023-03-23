@@ -7,9 +7,11 @@
 #include "utils/include_eigen.hpp"
 
 template <>
-struct fmt::formatter<Eigen::Transpose<Eigen::Vector3d>> : ostream_formatter {};
+struct fmt::formatter<Eigen::Transpose<Eigen::Vector3d>>
+    : fmt::ostream_formatter {};
 
 template <>
-struct fmt::formatter<Eigen::Transpose<Eigen::Vector2d>> : ostream_formatter {};
+struct fmt::formatter<Eigen::Transpose<Eigen::Vector2d>>
+    : fmt::ostream_formatter {};
 
 #endif /* SRC_LOGGING_LOGGING_HPP_ */

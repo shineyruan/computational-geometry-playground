@@ -11,7 +11,8 @@
 #include <Eigen/Dense>
 
 template <>
-struct fmt::formatter<Eigen::Transpose<Eigen::Vector3d>> : ostream_formatter {};
+struct fmt::formatter<Eigen::Transpose<Eigen::Vector3d>>
+    : fmt::ostream_formatter {};
 
 int main(int argc, char const *argv[]) {
   Eigen::Vector3d v;
