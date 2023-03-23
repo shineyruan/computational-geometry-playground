@@ -43,7 +43,7 @@ jobs:
 
       - name: Install system packages (Linux)
         if: steps.string.outputs.lowercase == 'linux'
-        run: sudo apt update; sudo apt install libgtk2.0-dev
+        run: sudo apt update; sudo apt install libgtk2.0-dev bison libdbus-1-dev libxi-dev libxtst-dev
 
       - name: Configure CMake
         # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.

@@ -23,7 +23,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
 
 # Linux specific libraries
 if (UNIX AND NOT APPLE)
-  target_link_libraries(${PROJECT_NAME}
+  target_link_libraries(${PROJECT_NAME} PUBLIC
     ${GTK_LIBRARIES}
   )
   target_include_directories(${PROJECT_NAME} PUBLIC
