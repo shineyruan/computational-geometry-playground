@@ -12,7 +12,7 @@ Tested on:
 
 ## How to Build
 
-This is a C++ 17 project managed with CMake and both [Vcpkg](https://vcpkg.io/en/) and [Conan package manager](https://conan.io/). Make sure Conan/Vcpkg is installed correctly onto your system.
+This is a C++ 17 project managed with CMake and both [Vcpkg](https://vcpkg.io/en/) and [Conan 2.x](https://conan.io/). Make sure Conan/Vcpkg is installed correctly onto your system.
 
 ### Configure Conan Dependencies
 
@@ -20,18 +20,25 @@ One could use the following commands to configure Conan dependencies:
 
 #### On MacOS, Linux (Ubuntu), Windows 11
 
-Just a normal build on MacOS:
+On MacOS:
 
 ```bash
 mkdir build && cd build
 conan install ../conanfile_macos.txt --build=missing
 ```
 
-and a normal build on Windows:
+On Windows:
 
 ```bash
 mkdir build && cd build
 conan install ../conanfile_windows.txt --build=missing
+```
+
+On Linux:
+
+```bash
+mkdir build && cd build
+conan install ../conanfile_linux.txt --build=missing
 ```
 
 **Note. VSCode debugging on macOS requires the use of extension `CodeLLDB`. Users shall have it installed in the workspace and use "Debug Launch (CodeLLDB) to launch the program.**
