@@ -11,16 +11,12 @@ target_link_libraries(test_eigen PUBLIC
 # add opencv examples
 add_executable(test_opencv test_opencv.cpp)
 target_link_libraries(test_opencv PUBLIC
-  ${OpenCV_LIBS}
+  opencv_core
+  opencv_highgui
+  opencv_imgcodecs
+  opencv_imgproc
 )
-if (UNIX AND NOT APPLE)
-  target_link_libraries(test_opencv PUBLIC
-    ${GTK_LIBRARIES}
-  )
-  target_include_directories(test_opencv PUBLIC
-    ${GTK_INCLUDE_DIRS}
-  )
-endif()
+
 target_include_directories(test_opencv PUBLIC
   ${OpenCV_INCLUDE_DIRS}
 )

@@ -16,20 +16,13 @@ source_group("Headers"  FILES ${HEADER_FILES})
 # link libraries
 target_link_libraries(${PROJECT_NAME} PUBLIC
   Eigen3::Eigen
-  ${OpenCV_LIBS}
   spdlog::spdlog
   fmt::fmt
+  opencv_core
+  opencv_highgui
+  opencv_imgcodecs
+  opencv_imgproc
 )
-
-# Linux specific libraries
-if (UNIX AND NOT APPLE)
-  target_link_libraries(${PROJECT_NAME} PUBLIC
-    ${GTK_LIBRARIES}
-  )
-  target_include_directories(${PROJECT_NAME} PUBLIC
-    ${GTK_INCLUDE_DIRS}
-  )
-endif()
 
 # include dirs
 target_include_directories(${PROJECT_NAME} PUBLIC

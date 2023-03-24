@@ -6,7 +6,7 @@ include_directories(
 
 # convex hull solver
 add_executable(convex_hull convex_hull.cpp)
-target_link_libraries(convex_hull PRIVATE
+target_link_libraries(convex_hull PUBLIC
   ${PROJECT_NAME}
 )
 target_compile_options(convex_hull PRIVATE
