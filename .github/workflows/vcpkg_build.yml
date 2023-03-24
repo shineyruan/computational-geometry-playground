@@ -27,6 +27,10 @@ jobs:
         with:
           string: ${{ runner.os }}
 
+      - name: Install system packages (Linux)
+        if: steps.string.outputs.lowercase == 'linux'
+        run: sudo apt update; sudo apt install libgtk2.0-dev bison libdbus-1-dev libxi-dev libxtst-dev
+
       - name: Set up Vcpkg
         uses: lukka/run-vcpkg@v10
         id: runvcpkg
@@ -40,10 +44,6 @@ jobs:
         uses: hendrikmuhs/ccache-action@v1.2.5
         with:
           key: ${{ matrix.os }}-${{ matrix.type }}
-
-      - name: Install system packages (Linux)
-        if: steps.string.outputs.lowercase == 'linux'
-        run: sudo apt update; sudo apt install libgtk2.0-dev bison libdbus-1-dev libxi-dev libxtst-dev
 
       - name: Configure CMake
         # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
