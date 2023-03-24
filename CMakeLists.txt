@@ -29,9 +29,9 @@ if(COMPILER_SUPPORTS_MARCH_NATIVE)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
 endif()
 
-# setup Conan toolchain
+# setup CMake toolchain (Conan by default)
 set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_BINARY_DIR}/conan_toolchain.cmake" CACHE PATH "toolchain file")
-message(STATUS "Defined Conan toolchain file: ${CMAKE_TOOLCHAIN_FILE}")
+message(STATUS "Used CMake toolchain file: ${CMAKE_TOOLCHAIN_FILE}")
 
 # required packages
 find_package(OpenCV REQUIRED)
