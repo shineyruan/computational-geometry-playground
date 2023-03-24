@@ -29,7 +29,7 @@ jobs:
 
       - name: Install system packages (Linux)
         if: steps.string.outputs.lowercase == 'linux'
-        run: sudo apt update; sudo apt install libgtk2.0-dev bison libdbus-1-dev libxi-dev libxtst-dev
+        run: sudo apt update; sudo apt install bison libdbus-1-dev libxi-dev libxtst-dev
 
       - name: Set up Vcpkg
         uses: lukka/run-vcpkg@v10
