@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
 project(cgsolver)
-set(PROJ_NAME ${PROJECT_NAME}) # avoid confusion with Conan pkgs
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 17)
@@ -26,16 +29,14 @@ if(COMPILER_SUPPORTS_MARCH_NATIVE)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
 endif()
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup() # by default, sets CMAKE_LIBRARY_OUTPUT_DIRECTORY, CMAKE_RUNTIME_OUTPUT_DIRECTORY
+# setup CMake toolchain (Conan by default)
+set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_BINARY_DIR}/conan_toolchain.cmake" CACHE PATH "toolchain file")
+message(STATUS "Used CMake toolchain file: ${CMAKE_TOOLCHAIN_FILE}")
 
-# find GTK-2.0 for OpenCV highgui
-# Only on Linux
-if (UNIX AND NOT APPLE)
-  find_package(PkgConfig REQUIRED)
-  PKG_CHECK_MODULES(GTK REQUIRED gtk+-2.0)
-  message(STATUS "GTK Libraries: ${GTK_LIBRARIES}")
-endif()
+# required packages
+find_package(OpenCV REQUIRED)
+find_package(spdlog REQUIRED)
+find_package(Eigen3 REQUIRED)
 
 # --------------------------
 add_subdirectory(src)

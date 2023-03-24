@@ -1,0 +1,55 @@
+# borrowed from https://github.com/actions/starter-workflows
+name: Vcpkg Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
+    # You can convert this to a matrix build if you need cross-platform coverage.
+    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.type }} on ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        type: ["Release", "Debug"]
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get lower case OS string
+        id: string
+        uses: ASzc/change-string-case-action@v5
+        with:
+          string: ${{ runner.os }}
+
+      - name: Install system packages (Linux)
+        if: steps.string.outputs.lowercase == 'linux'
+        run: sudo apt update; sudo apt install libgtk2.0-dev bison libdbus-1-dev libxi-dev libxtst-dev
+
+      - name: Set up Vcpkg
+        uses: lukka/run-vcpkg@v10
+        id: runvcpkg
+        with:
+          vcpkgDirectory: "${{ github.workspace }}/vcpkg"
+          vcpkgGitCommitId: "8875aa3cd9b3b62e7c7207ee172cebd0c944abca"
+          vcpkgJsonGlob: "vcpkg.json"
+          appendedCacheKey: vcpkginstall
+
+      - name: ccache
+        uses: hendrikmuhs/ccache-action@v1.2.5
+        with:
+          key: ${{ matrix.os }}-${{ matrix.type }}
+
+      - name: Configure CMake
+        # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
+        # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
+        run: cmake -B ${{ github.workspace }}/build -DCMAKE_TOOLCHAIN_FILE="${{ github.workspace }}/vcpkg/scripts/buildsystems/vcpkg.cmake" -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
+
+      - name: Build
+        # Build your program with the given configuration
+        run: cmake --build ${{ github.workspace }}/build --config ${{ matrix.type }}

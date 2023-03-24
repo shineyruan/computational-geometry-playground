@@ -1,0 +1,19 @@
+{
+  "name": "computational-geometry-playground",
+  "version-string": "0.0.1",
+  "dependencies": [
+    {
+      "name": "eigen3",
+      "version>=": "3.4.0"
+    },
+    {
+      "name": "spdlog",
+      "version>=": "1.11.0"
+    },
+    {
+      "name": "opencv",
+      "version>=": "4.5.5"
+    }
+  ],
+  "builtin-baseline": "8875aa3cd9b3b62e7c7207ee172cebd0c944abca"
+}

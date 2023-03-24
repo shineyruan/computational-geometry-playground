@@ -2,16 +2,24 @@
   "tasks": [
     {
       "type": "shell",
-      "label": "debug_build",
-      "command": "cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug; make -j",
+      "label": "debug_build_vcpkg",
+      "command": "cmake .. -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug; make -j",
       "options": {
         "cwd": "${workspaceFolder}/build"
       }
     },
     {
       "type": "shell",
-      "label": "release_build",
-      "command": "cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Release; make -j",
+      "label": "release_build_vcpkg",
+      "command": "cmake .. -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Release; make -j",
+      "options": {
+        "cwd": "${workspaceFolder}/build"
+      }
+    },
+    {
+      "type": "shell",
+      "label": "build_conan",
+      "command": "cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake; make -j",
       "options": {
         "cwd": "${workspaceFolder}/build"
       }
