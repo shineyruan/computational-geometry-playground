@@ -38,14 +38,6 @@ find_package(OpenCV REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(Eigen3 REQUIRED)
 
-# find GTK-2.0 for OpenCV highgui
-# Only on Linux
-if (UNIX AND NOT APPLE)
-  find_package(PkgConfig REQUIRED)
-  PKG_CHECK_MODULES(GTK REQUIRED gtk+-2.0)
-  message(STATUS "GTK Libraries: ${GTK_LIBRARIES}")
-endif()
-
 # --------------------------
 add_subdirectory(src)
 add_subdirectory(examples)
