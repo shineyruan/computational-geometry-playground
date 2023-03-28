@@ -29,16 +29,12 @@
     },
     {
       "name": "Debug Launch Convex Hull (CodeLLDB)",
-      "type": "cppdbg",
+      "type": "lldb",
       "request": "launch",
       "program": "${workspaceFolder}/build/bin/convex_hull",
       "args": [],
-      "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
-      "environment": [],
-      "externalConsole": false,
       "internalConsoleOptions": "openOnSessionStart",
-      "MIMode": "lldb",
       "preLaunchTask": "debug_build_vcpkg"
     },
     {
