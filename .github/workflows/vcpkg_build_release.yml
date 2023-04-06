@@ -2,7 +2,6 @@
 name: Vcpkg Build
 
 on:
-  push:
   pull_request:
 
 # Cancel the workflow if there is a new one
@@ -11,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  vcpkg_build:
+  vcpkg_build_release:
     # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
     # You can convert this to a matrix build if you need cross-platform coverage.
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
@@ -19,7 +18,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        type: ["Release", "Debug"]
+        type: ["Release"]
       fail-fast: false
 
     steps:
