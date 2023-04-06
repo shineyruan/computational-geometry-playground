@@ -3,6 +3,8 @@ name: Vcpkg Build (Debug)
 
 on:
   push:
+    branches-ignore:
+      - main
 
 # Cancel the workflow if there is a new one
 concurrency:

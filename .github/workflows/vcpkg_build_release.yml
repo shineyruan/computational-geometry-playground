@@ -3,6 +3,9 @@ name: Vcpkg Build (Release)
 
 on:
   pull_request:
+  push:
+    branches:
+      - main
 
 # Cancel the workflow if there is a new one
 concurrency:
