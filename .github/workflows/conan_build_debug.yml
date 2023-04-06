@@ -1,5 +1,5 @@
 # borrowed from https://github.com/actions/starter-workflows
-name: Conan Build
+name: Conan Build (Debug)
 
 on:
   push:
