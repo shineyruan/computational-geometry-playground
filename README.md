@@ -1,4 +1,4 @@
-[![Conan Build](https://github.com/shineyruan/computational-geometry-playground/actions/workflows/conna_build.yml/badge.svg)](https://github.com/shineyruan/computational-geometry-playground/actions/workflows/conna_build.yml)
+[![Conan Build](https://github.com/shineyruan/computational-geometry-playground/actions/workflows/conan_build.yml/badge.svg)](https://github.com/shineyruan/computational-geometry-playground/actions/workflows/conan_build.yml)
 [![Vcpkg Build](https://github.com/shineyruan/computational-geometry-playground/actions/workflows/vcpkg_build.yml/badge.svg)](https://github.com/shineyruan/computational-geometry-playground/actions/workflows/vcpkg_build.yml)
 
 # computational-geometry-playground
