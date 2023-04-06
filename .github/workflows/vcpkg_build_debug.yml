@@ -1,21 +1,26 @@
 # borrowed from https://github.com/actions/starter-workflows
-name: Vcpkg Build
+name: Vcpkg Build (Debug)
 
 on:
   push:
-  pull_request:
+    branches-ignore:
+      - main
+
+# Cancel the workflow if there is a new one
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build:
+  vcpkg_build:
     # The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
     # You can convert this to a matrix build if you need cross-platform coverage.
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
     runs-on: ${{ matrix.os }}
-    name: ${{ matrix.type }} on ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        type: ["Release", "Debug"]
+        type: ["Debug"]
       fail-fast: false
 
     steps:
@@ -32,13 +37,12 @@ jobs:
         run: sudo apt update; sudo apt install libgtk2.0-dev bison libdbus-1-dev libxi-dev libxtst-dev
 
       - name: Set up Vcpkg
-        uses: lukka/run-vcpkg@v10
-        id: runvcpkg
+        uses: lukka/run-vcpkg@v11
+        id: run_vcpkg
         with:
           vcpkgDirectory: "${{ github.workspace }}/vcpkg"
-          vcpkgGitCommitId: "8875aa3cd9b3b62e7c7207ee172cebd0c944abca"
+          vcpkgGitCommitId: "657bfe23f401f234d2bea75c36f79777ad944d21"
           vcpkgJsonGlob: "vcpkg.json"
-          appendedCacheKey: vcpkginstall
 
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.5
