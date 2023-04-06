@@ -7,8 +7,8 @@ A C++ playground for computational geometry algorithms &amp; plotting.
 
 Tested on:
 
-* MacOS Monterey 12.5 with M1 chip
-* Ubuntu 20.04 LTS
+* MacOS Ventura 13.3 with M1 chip
+* Ubuntu 22.04 LTS
 * Windows 11
 
 ## How to Build
