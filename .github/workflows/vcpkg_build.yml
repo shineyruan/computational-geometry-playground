@@ -36,13 +36,12 @@ jobs:
         run: sudo apt update; sudo apt install libgtk2.0-dev bison libdbus-1-dev libxi-dev libxtst-dev
 
       - name: Set up Vcpkg
-        uses: lukka/run-vcpkg@v10
-        id: runvcpkg
+        uses: lukka/run-vcpkg@v11
+        id: run_vcpkg
         with:
           vcpkgDirectory: "${{ github.workspace }}/vcpkg"
           vcpkgGitCommitId: "657bfe23f401f234d2bea75c36f79777ad944d21"
           vcpkgJsonGlob: "vcpkg.json"
-          appendedCacheKey: vcpkginstall
 
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2.5
