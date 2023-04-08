@@ -1,4 +1,3 @@
-[![Conan Build](https://github.com/shineyruan/computational-geometry-playground/actions/workflows/conan_build_release.yml/badge.svg)](https://github.com/shineyruan/computational-geometry-playground/actions/workflows/conan_build_release.yml)
 [![Vcpkg Build](https://github.com/shineyruan/computational-geometry-playground/actions/workflows/vcpkg_build_release.yml/badge.svg)](https://github.com/shineyruan/computational-geometry-playground/actions/workflows/vcpkg_build_release.yml)
 
 # computational-geometry-playground
@@ -13,75 +12,18 @@ Tested on:
 
 ## How to Build
 
-This is a C++ 17 project managed with CMake and both [Vcpkg](https://vcpkg.io/en/) and [Conan 2.x](https://conan.io/). Make sure Conan/Vcpkg is installed correctly onto your system.
-
-### Configure Conan Dependencies
-
-One could use the following commands to configure Conan dependencies:
-
-#### On MacOS, Linux (Ubuntu), Windows 11
-
-On MacOS:
-
-```bash
-mkdir build && cd build
-conan install ../conanfile_macos.txt --build=missing
-```
-
-On Windows:
-
-```bash
-mkdir build && cd build
-conan install ../conanfile_windows.txt --build=missing
-```
-
-On Linux:
-
-```bash
-mkdir build && cd build
-conan install ../conanfile_linux.txt --build=missing
-```
-
-**Note. VSCode debugging on macOS requires the use of extension `CodeLLDB`. Users shall have it installed in the workspace and use "Debug Launch (CodeLLDB) to launch the program.**
-
-### Configure Vcpkg Dependencies
-
-Clone the vcpkg repo into `$HOME`.
+This is a C++ 17 project managed with CMake and [Vcpkg](https://vcpkg.io/en/) in manifest mode. Make sure Vcpkg is installed correctly onto your system:
 
 ```bash
 git clone https://github.com/microsoft/vcpkg "$HOME/vcpkg"
+$HOME/vcpkg/bootstrap-vcpkg.sh   # or $HOME/vcpkg/bootstrap-vcpkg.bat on Windows
 ```
 
-### Building Source Code
-
-#### On MacOS & Linux
-
-For Conan,
-
-```bash
-cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake
-make -j
-```
-
-or Vcpkg
+To build the source code, run CMake with Vcpkg toolchain:
 
 ```bash
 cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_TOOLCHAIN_FILE=$HOME/vcpkg/scripts/buildsystems/vcpkg.cmake
 make -j
 ```
 
-#### On Windows 11
-
-In Powershell, run
-
-```bash
-cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake
-```
-
-or
-
-```bash
-cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_TOOLCHAIN_FILE=$HOME/vcpkg/scripts/buildsystems/vcpkg.cmake
-```
-
-Open Visual Studio 2022 with the generated project `cg_playground.sln`. In Visual Studio 2022, set `cg_playground` as startup project, and then hit `CTRL-B` to build, `CTRL-F5` to run.
+On Windows 11, open Visual Studio 2022 with the generated project `cgsolver.sln`. In Visual Studio 2022, set `cgsolver` as startup project, and then hit `CTRL-B` to build, `CTRL-F5` to run.
