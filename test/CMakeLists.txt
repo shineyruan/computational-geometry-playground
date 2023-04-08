@@ -21,16 +21,6 @@ target_include_directories(test_opencv PUBLIC
   ${OpenCV_INCLUDE_DIRS}
 )
 
-find_package(implot CONFIG REQUIRED)
-find_package(imgui CONFIG REQUIRED)
-find_package(OpenGL REQUIRED)
-add_executable(test_implot test_implot.cpp)
-target_link_libraries(test_implot PUBLIC
-  implot::implot
-  imgui::imgui
-  ${OPENGL_LIBRARIES}
-)
-
 find_package(sciplot CONFIG REQUIRED)
 add_executable(test_sciplot test_sciplot.cpp)
 target_link_libraries(test_sciplot PUBLIC sciplot::sciplot)
