@@ -30,3 +30,7 @@ target_link_libraries(test_implot PUBLIC
   imgui::imgui
   ${OPENGL_LIBRARIES}
 )
+
+find_package(sciplot CONFIG REQUIRED)
+add_executable(test_sciplot test_sciplot.cpp)
+target_link_libraries(test_sciplot PUBLIC sciplot::sciplot)
