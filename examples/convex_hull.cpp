@@ -13,7 +13,7 @@
 #include "common/geometry/points2d.hpp"
 #include "visualization/drawable/line_string.hpp"
 #include "visualization/drawable/point_set.hpp"
-#include "visualization/visualizer/opencv_visualizer.hpp"
+#include "visualization/visualizer/sciplot_visualizer.hpp"
 
 using namespace cgzr;
 
@@ -33,7 +33,7 @@ int main() {
   auto results = convex_hull_solver->Solve(input_geometries);
 
   SPDLOG_INFO("Creating visualizer...");
-  visualization::OpenCVVisualizer visualizer;
+  visualization::SciplotVisualizer visualizer;
 
   SPDLOG_INFO("Adding items to visualizer...");
   for (const auto& out_geometry : results) {

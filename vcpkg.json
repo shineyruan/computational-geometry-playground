@@ -2,9 +2,10 @@
   "name": "computational-geometry-playground",
   "version-string": "0.0.1",
   "dependencies": [
-    {"name": "eigen3", "version>=": "3.4.0"},
-    {"name": "spdlog", "version>=": "1.11.0"},
-    {"name": "opencv", "version>=": "4.5.5"}
+    "eigen3",
+    "spdlog",
+    "opencv",
+    {"name": "sciplot", "version>=": "0.3.1"}
   ],
   "builtin-baseline": "657bfe23f401f234d2bea75c36f79777ad944d21"
 }

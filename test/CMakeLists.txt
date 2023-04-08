@@ -20,3 +20,7 @@ target_link_libraries(test_opencv PUBLIC
 target_include_directories(test_opencv PUBLIC
   ${OpenCV_INCLUDE_DIRS}
 )
+
+find_package(sciplot CONFIG REQUIRED)
+add_executable(test_sciplot test_sciplot.cpp)
+target_link_libraries(test_sciplot PUBLIC sciplot::sciplot)
