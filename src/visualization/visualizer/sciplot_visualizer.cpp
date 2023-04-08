@@ -11,9 +11,15 @@ void SciplotVisualizer::Visualize() const {
   // Initialize plot
   sciplot::Plot2D plot;
 
+  // Set the plot fonts
+  plot.fontName("Palatino");
+  plot.fontSize(12);
+  plot.legend().atTop().fontSize(10).displayHorizontal().displayExpandWidthBy(
+      2);
+
   // Set the x and y labels
-  plot.xlabel("x");
-  plot.ylabel("y");
+  plot.xlabel("x").fontName("Palatino").fontSize(12);
+  plot.ylabel("y").fontName("Palatino").fontSize(12);
 
   // Set the x and y ranges
   plot.xrange(world_min_.x() - PLOT_X_EXTEND_RATIO * std::abs(world_min_.x()),
