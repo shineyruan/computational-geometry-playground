@@ -10,6 +10,15 @@ Tested on:
 * Ubuntu 22.04 LTS
 * Windows 11
 
+## Software Dependency
+
+In all systems, the following software is required:
+
+* CMake >=3.15
+* C++ 17 compiler
+* [Vcpkg](https://vcpkg.io/en/)
+* [gnuplot](http://gnuplot.info/) (runtime dependency for visualization)
+
 ## How to Build
 
 This is a C++ 17 project managed with CMake and [Vcpkg](https://vcpkg.io/en/) in manifest mode. Make sure Vcpkg is installed correctly onto your system:
@@ -27,3 +36,7 @@ make -j
 ```
 
 On Windows 11, open Visual Studio 2022 with the generated project `cgsolver.sln`. In Visual Studio 2022, set `cgsolver` as startup project, and then hit `CTRL-B` to build, `CTRL-F5` to run.
+
+## How to Run
+
+Users could run any of the executables specified in the `examples/` folder.
