@@ -41,11 +41,12 @@ jobs:
         id: run_vcpkg
         with:
           vcpkgDirectory: "${{ github.workspace }}/vcpkg"
-          vcpkgGitCommitId: "657bfe23f401f234d2bea75c36f79777ad944d21"
+          vcpkgGitCommitId: "638b1588be3a265a9c7ad5b212cef72a1cad336a"
           vcpkgJsonGlob: "vcpkg.json"
+          doNotCache: false
 
       - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.5
+        uses: hendrikmuhs/ccache-action@v1.2
         with:
           key: ${{ matrix.os }}-${{ matrix.type }}
 
