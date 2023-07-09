@@ -34,7 +34,6 @@ set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_BINARY_DIR}/conan_toolchain.cmake" CAC
 message(STATUS "Used CMake toolchain file: ${CMAKE_TOOLCHAIN_FILE}")
 
 # required packages
-find_package(OpenCV REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(sciplot REQUIRED)
