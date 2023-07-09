@@ -9,17 +9,17 @@ target_link_libraries(test_eigen PUBLIC
 )
 
 # add opencv examples
-add_executable(test_opencv test_opencv.cpp)
-target_link_libraries(test_opencv PUBLIC
-  opencv_core
-  opencv_highgui
-  opencv_imgcodecs
-  opencv_imgproc
-)
-
-target_include_directories(test_opencv PUBLIC
-  ${OpenCV_INCLUDE_DIRS}
-)
+# DEPRECATED
+# add_executable(test_opencv test_opencv.cpp)
+# target_link_libraries(test_opencv PUBLIC
+#   opencv_core
+#   opencv_highgui
+#   opencv_imgcodecs
+#   opencv_imgproc
+# )
+# target_include_directories(test_opencv PUBLIC
+#   ${OpenCV_INCLUDE_DIRS}
+# )
 
 find_package(sciplot CONFIG REQUIRED)
 add_executable(test_sciplot test_sciplot.cpp)

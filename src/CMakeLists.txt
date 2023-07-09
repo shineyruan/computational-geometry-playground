@@ -6,6 +6,11 @@ add_library(${PROJECT_NAME})
 file(GLOB_RECURSE SOURCE_FILES *.cpp *.c)
 file(GLOB_RECURSE HEADER_FILES *.hpp *.inl *.h)
 
+# Deprecate OpenCV visualizer
+list(REMOVE_ITEM SOURCE_FILES
+  ${CMAKE_CURRENT_SOURCE_DIR}/visualization/visualizer/opencv_visualizer.cpp
+)
+
 # Add target sources
 target_sources(${PROJECT_NAME} PUBLIC ${SOURCE_FILES} ${HEADER_FILES})
 
@@ -18,16 +23,10 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
   Eigen3::Eigen
   spdlog::spdlog
   fmt::fmt
-  opencv_core
-  opencv_highgui
-  opencv_imgcodecs
-  opencv_imgproc
+  sciplot::sciplot
 )
 
 # include dirs
-target_include_directories(${PROJECT_NAME} PUBLIC
-  ${OpenCV_INCLUDE_DIRS}
-)
 target_include_directories(${PROJECT_NAME} PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}
 )
