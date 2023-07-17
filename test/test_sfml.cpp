@@ -39,7 +39,13 @@ int main() {
     sf::Event event;
     while (window.pollEvent(event)) {
       // "close requested" event: we close the window
-      if (event.type == sf::Event::Closed) window.close();
+      bool button_close = event.type == sf::Event::Closed;
+      bool key_q_or_esc = event.type == sf::Event::KeyPressed &&
+                          (event.key.code == sf::Keyboard::Q ||
+                           event.key.code == sf::Keyboard::Escape);
+      if (button_close || key_q_or_esc) {
+        window.close();
+      }
     }
 
     // clear the window with black color
