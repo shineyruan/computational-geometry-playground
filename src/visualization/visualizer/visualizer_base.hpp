@@ -25,7 +25,7 @@ class VisualizerBase {
         world_max_(std::numeric_limits<double>::infinity(),
                    std::numeric_limits<double>::infinity()) {}
   virtual ~VisualizerBase() {}
-  virtual void Visualize() const = 0;
+  virtual void Visualize() = 0;
 
   /**
    * @brief Adds the drawable into Visualizer and destroys it
