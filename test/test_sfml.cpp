@@ -1,3 +1,10 @@
+/**
+ * @file test_sfml.cpp
+ *
+ * @brief Code copied and modified from
+ * https://www.sfml-dev.org/tutorials/2.6/graphics-draw.php
+ */
+
 #include <SFML/Graphics.hpp>
 
 int main() {
