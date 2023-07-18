@@ -1,0 +1,29 @@
+{
+  "version": 4,
+  "configurePresets": [
+    {
+      "name": "Debug Windows 11",
+      "displayName": "Visual Studio Build Tools 2022 Release - amd64",
+      "description": "Using compilers for Visual Studio 17 2022 (x64 architecture)",
+      "generator": "Visual Studio 17 2022",
+      "toolset": "host=x64",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "${env:VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "Debug Windows 11",
+      "description": "",
+      "displayName": "x64 debug",
+      "configurePreset": "Debug Windows 11",
+      "cleanFirst": true,
+      "jobs": 16
+    }
+  ]
+}

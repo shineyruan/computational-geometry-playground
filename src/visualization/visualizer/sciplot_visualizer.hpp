@@ -10,13 +10,13 @@ namespace visualization {
 
 class SciplotVisualizer : public VisualizerBase {
  public:
-  void Visualize() const override;
+  void Visualize() override;
 
  private:
-  static constexpr unsigned int CANVAS_WIDTH = 500;
-  static constexpr unsigned int CANVAS_HEIGHT = 500;
-  static constexpr double PLOT_X_EXTEND_RATIO = 0.2;
-  static constexpr double PLOT_Y_EXTEND_RATIO = 0.2;
+  static constexpr unsigned int kCanvasWidth = 500;
+  static constexpr unsigned int kCanvasHeight = 500;
+  static constexpr double kPlotExtendRatioX = 0.2;
+  static constexpr double kPlotExtendRatioY = 0.2;
 
   void DrawPointSet(sciplot::Plot2D& plot, const DrawableBase* drawable) const;
   void DrawLineString(sciplot::Plot2D& plot,
