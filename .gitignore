@@ -321,4 +321,3 @@ environment_run.sh.env
 tmp
 !.vscode/launch.json
 !.vscode/tasks.json
-CMake*.json
