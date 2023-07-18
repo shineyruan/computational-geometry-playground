@@ -7,7 +7,7 @@
 namespace cgzr {
 namespace visualization {
 
-void SciplotVisualizer::Visualize() const {
+void SciplotVisualizer::Visualize() {
   // Initialize plot
   sciplot::Plot2D plot;
 
@@ -22,10 +22,10 @@ void SciplotVisualizer::Visualize() const {
   plot.ylabel("y").fontName("Palatino").fontSize(12);
 
   // Set the x and y ranges
-  plot.xrange(world_min_.x() - PLOT_X_EXTEND_RATIO * std::abs(world_min_.x()),
-              world_max_.x() + PLOT_X_EXTEND_RATIO * std::abs(world_max_.x()));
-  plot.yrange(world_min_.y() - PLOT_Y_EXTEND_RATIO * std::abs(world_min_.y()),
-              world_max_.y() + PLOT_Y_EXTEND_RATIO * std::abs(world_max_.y()));
+  plot.xrange(world_min_.x() - kPlotExtendRatioX * std::abs(world_min_.x()),
+              world_max_.x() + kPlotExtendRatioX * std::abs(world_max_.x()));
+  plot.yrange(world_min_.y() - kPlotExtendRatioY * std::abs(world_min_.y()),
+              world_max_.y() + kPlotExtendRatioY * std::abs(world_max_.y()));
 
   // Draw shapes
   for (const auto& drawable : drawables_) {
@@ -47,7 +47,7 @@ void SciplotVisualizer::Visualize() const {
 
   // Create canvas to hold figure
   sciplot::Canvas canvas = {{fig}};
-  canvas.size(CANVAS_WIDTH, CANVAS_HEIGHT);
+  canvas.size(kCanvasWidth, kCanvasHeight);
 
   // Display objects
   canvas.show();
