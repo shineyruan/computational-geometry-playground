@@ -22,7 +22,7 @@
       "description": "",
       "displayName": "x64 debug",
       "configurePreset": "Debug Windows 11",
-      "cleanFirst": true,
+      "cleanFirst": false,
       "jobs": 16
     }
   ]
