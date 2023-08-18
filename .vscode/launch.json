@@ -62,6 +62,16 @@
         "MIMode": "lldb"
       },
       "preLaunchTask": "release_build_vcpkg"
+    },
+    {
+      "name": "Debug Launch Line Segment Intersection (CodeLLDB)",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/bin/line_segment_intersection",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "internalConsoleOptions": "openOnSessionStart",
+      "preLaunchTask": "debug_build_vcpkg"
     }
   ],
   "version": "2.0.0"
