@@ -11,7 +11,7 @@ std::unique_ptr<GeometryBase> GeometryBase::Create(GeometryType type) {
     case GeometryType::POINTS_2D:
       return std::make_unique<Points2d>();
     case GeometryType::LINES_2D:
-      return std::make_unique<Lines2D>();
+      return std::make_unique<Lines2d>();
     default:
       SPDLOG_ERROR("Type {} is not supported.", ToString(type));
       break;
@@ -24,6 +24,8 @@ std::unique_ptr<GeometryBase> GeometryBase::CreateRandom(GeometryType type,
   switch (type) {
     case GeometryType::POINTS_2D:
       return std::make_unique<Points2d>(size);
+    case GeometryType::LINES_2D:
+      return std::make_unique<Lines2d>(size);
     default:
       SPDLOG_ERROR("Type {} is not supported.", ToString(type));
       break;
