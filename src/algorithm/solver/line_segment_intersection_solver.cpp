@@ -51,11 +51,7 @@ std::vector<std::unique_ptr<GeometryBase>> LineSegmentIntersectionSolver::Solve(
   using Segment2d = std::pair<Eigen::Vector2d, Eigen::Vector2d>;
 
   //  0.1 construct line segment from Lines2d
-  std::vector<Segment2d> segments;
-  auto lines = lines_2d->Lines();
-  for (const auto& [p1, p2] : lines) {
-    segments.emplace_back(p1, p2);
-  }
+  std::vector<Segment2d> segments = lines_2d->Lines();
 
   // 1. Initialize event queue
   // Event queue is a mapping from segment endpoints to pointer to segments
