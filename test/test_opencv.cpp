@@ -19,7 +19,8 @@ int main(int argc, char** argv) {
   // Check if the image is created
   // successfully
   if (!image.data) {
-    cout << "Could not open or find" << " the image";
+    cout << "Could not open or find"
+         << " the image";
 
     return 0;
   }
