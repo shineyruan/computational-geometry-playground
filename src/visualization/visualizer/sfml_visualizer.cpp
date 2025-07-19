@@ -1,8 +1,17 @@
 #include "sfml_visualizer.hpp"
 
-#include <SFML/Graphics.hpp>
+#include <spdlog/spdlog.h>
 
-#include "logging/logging.hpp"
+#include <SFML/Graphics.hpp>
+#include <SFML/Graphics/PrimitiveType.hpp>
+#include <SFML/System/Vector2.hpp>
+#include <SFML/Window/Event.hpp>
+#include <SFML/Window/Keyboard.hpp>
+#include <SFML/Window/VideoMode.hpp>
+#include <SFML/Window/WindowEnums.hpp>
+#include <cstdint>
+#include <optional>
+
 #include "visualization/drawable/line_string.hpp"
 #include "visualization/drawable/point_set.hpp"
 
@@ -11,9 +20,9 @@ namespace visualization {
 
 namespace {
 inline sf::Color ToSfmlColor(const ColorRGB& color) {
-  sf::Uint8 r = static_cast<sf::Uint8>(color.r);
-  sf::Uint8 g = static_cast<sf::Uint8>(color.g);
-  sf::Uint8 b = static_cast<sf::Uint8>(color.b);
+  uint8_t r = static_cast<uint8_t>(color.r);
+  uint8_t g = static_cast<uint8_t>(color.g);
+  uint8_t b = static_cast<uint8_t>(color.b);
   return sf::Color(r, g, b);
 }
 }  // namespace
@@ -21,11 +30,12 @@ inline sf::Color ToSfmlColor(const ColorRGB& color) {
 SfmlVisualizer::SfmlVisualizer() : VisualizerBase() {
   // antialiasing
   sf::ContextSettings window_settings;
-  window_settings.antialiasingLevel = 5;
+  window_settings.antiAliasingLevel = 5;
 
-  window_.create(sf::VideoMode(kCanvasWidth + 2 * kCanvasWidthBuffer,
-                               kCanvasHeight + 2 * kCanvasHeightBuffer),
-                 "Visualization", sf::Style::Close, window_settings);
+  window_.create(
+      sf::VideoMode(sf::Vector2u{kCanvasWidth + 2 * kCanvasWidthBuffer,
+                                 kCanvasHeight + 2 * kCanvasHeightBuffer}),
+      "Visualization", sf::State::Windowed, window_settings);
 }
 
 void SfmlVisualizer::Visualize() {
@@ -36,13 +46,14 @@ void SfmlVisualizer::Visualize() {
   while (window_.isOpen()) {
     // check all the window's events that were triggered since the last
     // iteration of the loop
-    sf::Event event;
-    while (window_.pollEvent(event)) {
+    while (const std::optional<sf::Event> event = window_.pollEvent()) {
       // "close requested" event: we close the window
-      bool button_close = event.type == sf::Event::Closed;
-      bool key_q_or_esc = event.type == sf::Event::KeyPressed &&
-                          (event.key.code == sf::Keyboard::Q ||
-                           event.key.code == sf::Keyboard::Escape);
+      bool button_close = event->is<sf::Event::Closed>();
+      bool key_q_or_esc = event->is<sf::Event::KeyPressed>() &&
+                          (event->getIf<sf::Event::KeyPressed>()->code ==
+                               sf::Keyboard::Key::Q ||
+                           event->getIf<sf::Event::KeyPressed>()->code ==
+                               sf::Keyboard::Key::Escape);
       if (button_close || key_q_or_esc) {
         window_.close();
       }
@@ -88,7 +99,8 @@ void SfmlVisualizer::DrawPointSet(sf::RenderWindow& window,
                    kCircleRadius;
     float vert_y = static_cast<float>((vert.y() - offset.y()) * scaling.y()) -
                    kCircleRadius;
-    dot.move(kCanvasWidthBuffer + vert_x, kCanvasHeightBuffer + vert_y);
+    dot.move(sf::Vector2f{kCanvasWidthBuffer + vert_x,
+                          kCanvasHeightBuffer + vert_y});
     window.draw(dot);
   }
 }
@@ -110,23 +122,24 @@ void SfmlVisualizer::DrawLineString(sf::RenderWindow& window,
 
   for (const auto& [start, end] : line_string->Edges()) {
     const auto& start_v = line_string->Vertices().at(start);
-    auto start_pos = sf::Vector2f(
+    const auto start_pos = sf::Vector2f(
         kCanvasWidthBuffer +
             static_cast<float>((start_v.x() - offset.x()) * scaling.x()),
         kCanvasHeightBuffer +
             static_cast<float>((start_v.y() - offset.y()) * scaling.y()));
-    ordered_vertices.emplace_back(start_pos, color);
+    ordered_vertices.push_back({start_pos, color});
 
     const auto& end_v = line_string->Vertices().at(end);
-    auto end_pos = sf::Vector2f(
+    const auto end_pos = sf::Vector2f(
         kCanvasWidthBuffer +
             static_cast<float>((end_v.x() - offset.x()) * scaling.x()),
         kCanvasHeightBuffer +
             static_cast<float>((end_v.y() - offset.y()) * scaling.y()));
-    ordered_vertices.emplace_back(end_pos, color);
+    ordered_vertices.push_back({end_pos, color});
   }
 
-  window.draw(ordered_vertices.data(), ordered_vertices.size(), sf::Lines);
+  window.draw(ordered_vertices.data(), ordered_vertices.size(),
+              sf::PrimitiveType::Lines);
 }
 
 std::pair<Eigen::Vector2d, Eigen::Vector2d>

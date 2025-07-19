@@ -1,11 +1,11 @@
 {
   "name": "computational-geometry-playground",
   "version-string": "0.0.1",
+  "builtin-baseline": "4e43cfeefb3b35b3512146bc4f62967169456734",
   "dependencies": [
     "eigen3",
-    "spdlog",
     {"name": "sciplot", "version>=": "0.3.1"},
-    {"name": "sfml", "version>=": "2.6.1"}
-  ],
-  "builtin-baseline": "ce46ba8777d8f899d8dc11afefb8eca39293df39"
+    {"name": "sfml", "version>=": "3.0.0"},
+    "spdlog"
+  ]
 }

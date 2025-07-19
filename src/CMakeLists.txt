@@ -24,8 +24,8 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
   spdlog::spdlog
   fmt::fmt
   sciplot::sciplot
-  sfml-graphics
-  sfml-window
+  SFML::Graphics
+  SFML::Window
 )
 
 # include dirs
