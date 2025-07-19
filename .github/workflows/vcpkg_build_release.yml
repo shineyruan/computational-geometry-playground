@@ -42,7 +42,7 @@ jobs:
         id: run_vcpkg
         with:
           vcpkgDirectory: "${{ github.workspace }}/vcpkg"
-          vcpkgGitCommitId: "ce46ba8777d8f899d8dc11afefb8eca39293df39"
+          vcpkgGitCommitId: "4e43cfeefb3b35b3512146bc4f62967169456734"
           vcpkgJsonGlob: "vcpkg.json"
           doNotCache: false
 
