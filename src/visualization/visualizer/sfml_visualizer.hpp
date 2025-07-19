@@ -2,6 +2,7 @@
 #define SRC_VISUALIZATION_VISUALIZER_SFML_VISUALIZER_HPP_
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 
 #include "visualization/visualizer/visualizer_base.hpp"
 

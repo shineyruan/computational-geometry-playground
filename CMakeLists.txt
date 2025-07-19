@@ -37,7 +37,7 @@ message(STATUS "Used CMake toolchain file: ${CMAKE_TOOLCHAIN_FILE}")
 find_package(spdlog REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(sciplot REQUIRED)
-find_package(SFML COMPONENTS system window graphics CONFIG REQUIRED)
+find_package(SFML COMPONENTS Network Graphics Window Audio System CONFIG REQUIRED)
 
 # --------------------------
 add_subdirectory(src)
