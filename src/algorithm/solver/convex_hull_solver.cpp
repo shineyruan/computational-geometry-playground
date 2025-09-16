@@ -51,7 +51,7 @@ std::vector<std::unique_ptr<GeometryBase>> ConvexHullSolver::Solve(
 
     // construct lines to form a triangle shape
     auto lines_2d = GeometryBase::Create(GeometryType::LINES_2D);
-    Lines2D* p_lines = dynamic_cast<Lines2D*>(lines_2d.get());
+    Lines2d* p_lines = dynamic_cast<Lines2d*>(lines_2d.get());
 
     std::vector<std::pair<size_t, size_t>> line_indices{{0, 1}, {1, 2}, {2, 0}};
     p_lines->UpdatePoints(points_2d->AsVector2ds());
@@ -118,7 +118,7 @@ std::vector<std::unique_ptr<GeometryBase>> ConvexHullSolver::Solve(
 
   // 6.2 construct connecting lines
   auto lines_2d = GeometryBase::Create(GeometryType::LINES_2D);
-  Lines2D* p_lines = dynamic_cast<Lines2D*>(lines_2d.get());
+  Lines2d* p_lines = dynamic_cast<Lines2d*>(lines_2d.get());
 
   std::vector<std::pair<size_t, size_t>> line_indices{};
   line_indices.reserve(L.size());
