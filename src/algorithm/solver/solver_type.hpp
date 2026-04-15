@@ -3,7 +3,7 @@
 
 namespace cgzr {
 
-enum class SolverType { CONVEX_HULL = 0 };
+enum class SolverType { CONVEX_HULL = 0, LINE_SEGMENT_INTERSECTION };
 
 }
 
